@@ -86,6 +86,14 @@ class loja:
     def por_mes(self, valor):
         self._por_mes.append(valor)
 
+    @property
+    def roa(self):
+        return self._roa
+
+    @roa.setter
+    def roa(self, valor):
+        self._roa = valor
+
 
 class infoPorProduto:
     def __init__(self, nome, pdc, pdv, data, qtd):
@@ -124,17 +132,19 @@ infoLoja = loja()
 infoLoja.meses = set(vendas['Data'].dt.month)
 infoLoja.margemLiquida = vendas['Lucro'].sum()/vendas['Meu retorno'].sum()
 infoLoja.caixa = vendas['Meu retorno'].sum() - despesas['Saiu'].sum()
-infoLoja.estoque = despesas[despesas['Mercadoria'] == 'Sim']['Saiu'].sum() - vendas['Meu retorno'].sum()
-# print(infoLoja.meses.index(1))
+infoLoja.estoque = despesas[despesas['Ativo'] == 'Sim']['Saiu'].sum() - vendas['Meu retorno'].sum()
+infoLoja.roa = vendas['Lucro'].sum()/infoLoja.estoque
+print(infoLoja.roa)
 
 for mes in infoLoja.meses:
     analiseMensal = lojaMes()
     analiseMensal.margemLiquida = vendas[vendas['Data'].dt.month == mes]['Lucro'].sum()/vendas[vendas['Data'].dt.month == mes]['Meu retorno'].sum()
-    analiseMensal.caixa = vendas[vendas['Data'].dt.month == mes]['Meu retorno'].sum() - despesas[despesas['Período'].dt.month == mes]['Saiu'].sum()
-    analiseMensal.estoque = despesas[(despesas['Mercadoria'] == 'Sim') & (despesas['Período'].dt.month <= mes)]['Saiu'].sum() - vendas[vendas['Data'].dt.month <= mes]['Meu retorno'].sum()
+    analiseMensal.caixa = vendas[vendas['Data'].dt.month <= mes]['Meu retorno'].sum() - despesas[despesas['Período'].dt.month <= mes]['Saiu'].sum()
+    analiseMensal.estoque = despesas[(despesas['Ativo'] == 'Sim') & (despesas['Período'].dt.month <= mes)]['Saiu'].sum() - vendas[vendas['Data'].dt.month <= mes]['Meu retorno'].sum()
     analiseMensal.roa = vendas[vendas['Data'].dt.month == mes]['Lucro'].sum()/analiseMensal.estoque
     infoLoja.por_mes = analiseMensal
 # print(vendas[(vendas['Data'].dt.month >= 1) & (vendas['Data'].dt.month <= 2)].groupby(['Produto']).head())
 # print(despesas[despesas['Período'].dt.month == 1])
-for i in infoLoja.por_mes:
-    print(i.roa)
+for infoMes in infoLoja.por_mes:
+    print(infoMes.roa)
+

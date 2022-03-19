@@ -1,6 +1,6 @@
-Index;Pagamento;Saiu;Entrou;Período;Pago;Mercadoria
-0;Maquininha;-R$ 300,00;R$ 0,00;11/01/2022;Sim;Não
-1;Chronic;-R$ 1.667,20;R$ 422,40;11/01/2022;Sim;Sim
+Index;Pagamento;Saiu;Entrou;Período;Pago;Ativo
+0;Maquininha;-R$ 300,00;R$ 0,00;11/01/2022;Sim;Sim
+1;Chronic;-R$ 1.067,20;R$ 422,40;11/01/2022;Sim;Sim
 2;Fato;-R$ 748,00;R$ 873,05;07/02/2022;Sim;Sim
 3;Fato;-R$ 840,00;R$ 854,41;14/02/2022;Sim;Sim
 4;Fato;-R$ 902,00;R$ 616,00;21/02/2022;Sim;Sim
