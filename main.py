@@ -1,3 +1,5 @@
+from functools import reduce
+
 import numpy as np
 import pandas as pd
 from pandas import set_option
@@ -40,10 +42,19 @@ class lojaMes:
     def roa(self, valor):
         self._roa = valor
 
+    @property
+    def entrou_do_mes_passado(self):
+        return self._entrou_do_mes_passado
+
+    @entrou_do_mes_passado.setter
+    def entrou_do_mes_passado(self, valor):
+        self._entrou_do_mes_passado = valor
+
 
 class loja:
 
     def __init__(self):
+        self._capitalizacao: list = []
         self._por_mes: list = []
 
     @property
@@ -94,6 +105,15 @@ class loja:
     def roa(self, valor):
         self._roa = valor
 
+    @property
+    def capitalizacao(self):
+        return self._capitalizacao
+
+    @capitalizacao.setter
+    def capitalizacao(self, valor):
+        self._capitalizacao.append(valor)
+
+
 
 class infoPorProduto:
     def __init__(self, nome, pdc, pdv, data, qtd):
@@ -116,6 +136,14 @@ def to_number(valor):
     return float(valor.split('R$ ')[1].replace('.', '').replace(',', '.'))
 
 
+def valorizar(valor):
+    return valor * infoLoja.capitalizacao[-2]
+
+
+def capitalizar(valor):
+    return valor * infoLoja.capitalizacao[-1]
+
+
 despesas = pd.read_csv('despesas.csv', sep=";", encoding='latin-1').dropna()
 despesas['Período'] = pd.to_datetime(despesas['Período'], dayfirst=True)
 despesas['Saiu'] = despesas['Saiu'].apply(to_number)
@@ -133,18 +161,31 @@ infoLoja.meses = set(vendas['Data'].dt.month)
 infoLoja.margemLiquida = vendas['Lucro'].sum()/vendas['Meu retorno'].sum()
 infoLoja.caixa = vendas['Meu retorno'].sum() - despesas['Saiu'].sum()
 infoLoja.estoque = despesas[despesas['Ativo'] == 'Sim']['Saiu'].sum() - vendas['Meu retorno'].sum()
-infoLoja.roa = vendas['Lucro'].sum()/infoLoja.estoque
-print(infoLoja.roa)
+infoLoja.roa = vendas['Lucro'].sum()/despesas[despesas['Ativo'] == 'Sim']['Saiu'].sum()
+# print(infoLoja.roa)
 
 for mes in infoLoja.meses:
     analiseMensal = lojaMes()
     analiseMensal.margemLiquida = vendas[vendas['Data'].dt.month == mes]['Lucro'].sum()/vendas[vendas['Data'].dt.month == mes]['Meu retorno'].sum()
     analiseMensal.caixa = vendas[vendas['Data'].dt.month <= mes]['Meu retorno'].sum() - despesas[despesas['Período'].dt.month <= mes]['Saiu'].sum()
     analiseMensal.estoque = despesas[(despesas['Ativo'] == 'Sim') & (despesas['Período'].dt.month <= mes)]['Saiu'].sum() - vendas[vendas['Data'].dt.month <= mes]['Meu retorno'].sum()
-    analiseMensal.roa = vendas[vendas['Data'].dt.month == mes]['Lucro'].sum()/analiseMensal.estoque
+    analiseMensal.roa = vendas[vendas['Data'].dt.month == mes]['Lucro'].sum()/(despesas[(despesas['Ativo'] == 'Sim') & (despesas['Período'].dt.month <= mes)]['Saiu'].sum() - vendas[vendas['Data'].dt.month < mes]['Meu retorno'].sum())
+    analiseMensal.entrou_do_mes_passado = despesas[(despesas['Ativo'] == 'Sim') & (despesas['Período'].dt.month <= mes)]['Saiu'].sum() - vendas[vendas['Data'].dt.month < mes]['Meu retorno'].sum()
     infoLoja.por_mes = analiseMensal
 # print(vendas[(vendas['Data'].dt.month >= 1) & (vendas['Data'].dt.month <= 2)].groupby(['Produto']).head())
 # print(despesas[despesas['Período'].dt.month == 1])
-for infoMes in infoLoja.por_mes:
-    print(infoMes.roa)
 
+for infoMes in infoLoja.por_mes:
+    infoLoja.capitalizacao = (infoMes.roa + 1)
+    # print((infoMes.entrou_do_mes_passado * (infoMes.roa + 1)) - infoMes.entrou_do_mes_passado)
+
+# print(reduce(lambda x, y: x*y, infoLoja.capitalizacao[1:]))
+mes = 3
+x = vendas[(vendas['Data'].dt.month == mes)].groupby(['Produto'])['Meu retorno'].sum().apply(valorizar) - vendas[(vendas['Data'].dt.month == mes)].groupby(['Produto'])['Meu retorno'].sum()
+print(x)
+print(vendas[(vendas['Data'].dt.month == mes)].groupby(['Produto'])['Meu retorno'].sum())
+print(x.apply(capitalizar) + vendas[(vendas['Data'].dt.month == mes)].groupby(['Produto'])['Meu retorno'].sum().apply(capitalizar))
+
+# 868 / 1217
+# 777 / 1085
+# 1645 / 2302
