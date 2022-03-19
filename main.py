@@ -136,8 +136,10 @@ def to_number(valor):
     return float(valor.split('R$ ')[1].replace('.', '').replace(',', '.'))
 
 
-def valorizar(valor):
-    return valor * infoLoja.capitalizacao[-2]
+def valorizar(valor, mes):
+    v = reduce(lambda x, y: x*y, infoLoja.capitalizacao[mes:])
+    print(v)
+    return valor * v
 
 
 def capitalizar(valor):
@@ -177,15 +179,19 @@ for mes in infoLoja.meses:
 
 for infoMes in infoLoja.por_mes:
     infoLoja.capitalizacao = (infoMes.roa + 1)
-    # print((infoMes.entrou_do_mes_passado * (infoMes.roa + 1)) - infoMes.entrou_do_mes_passado)
 
+    # print((infoMes.entrou_do_mes_passado * (infoMes.roa + 1)) - infoMes.entrou_do_mes_passado)
 # print(reduce(lambda x, y: x*y, infoLoja.capitalizacao[1:]))
-mes = 3
-x = vendas[(vendas['Data'].dt.month == mes)].groupby(['Produto'])['Meu retorno'].sum().apply(valorizar) - vendas[(vendas['Data'].dt.month == mes)].groupby(['Produto'])['Meu retorno'].sum()
+mes = 1
+x = vendas[(vendas['Data'].dt.month == mes)].groupby(['Produto'])['Meu retorno'].sum().apply(valorizar, args=(mes-1,)) - vendas[(vendas['Data'].dt.month == mes)].groupby(['Produto'])['Meu retorno'].sum()
 print(x)
 print(vendas[(vendas['Data'].dt.month == mes)].groupby(['Produto'])['Meu retorno'].sum())
-print(x.apply(capitalizar) + vendas[(vendas['Data'].dt.month == mes)].groupby(['Produto'])['Meu retorno'].sum().apply(capitalizar))
+print(infoLoja.capitalizacao)
+# print(vendas[(vendas['Data'].dt.month == mes)].groupby(['Produto'])['Meu retorno'].sum())
+# print(x.apply(capitalizar) + vendas[(vendas['Data'].dt.month == mes)].groupby(['Produto'])['Meu retorno'].sum().apply(capitalizar))
 
+#349 / 868 = 1217
+#113 / 773 =
 # 868 / 1217
 # 777 / 1085
 # 1645 / 2302
