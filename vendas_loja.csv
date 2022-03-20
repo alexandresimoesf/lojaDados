@@ -1,71 +1,71 @@
-﻿Index;Produto;Tipo;Qtd;Meu retorno;Cidade;Data;Pdc;Lucro;Lucro %
-1;Camiseta chronic;Roupas;1;R$ 64,00;Sta Rita;12/01/2022;R$ 34,90;R$ 29,10;45,47%
-2;Bag;Roupas;1;R$ 72,00;Sta Rita;16/01/2022;R$ 51,90;R$ 20,10;27,92%
-3;Bag;Roupas;1;R$ 64,00;Cachoeira;05/02/2022;R$ 51,90;R$ 12,10;18,91%
-4;Camiseta chronic;Roupas;2;R$ 102,40;Cachoeira;05/02/2022;R$ 34,90;R$ 32,60;31,84%
-5;Tênis mormaii;Calçados;1;R$ 120,00;Sta Rita;05/02/2022;R$ 77,68;R$ 42,32;35,27%
-6;Calça preta;Roupas;1;R$ 58,47;Sta Rita;08/02/2022;R$ 34,00;R$ 24,47;41,85%
-7;Calça preta;Roupas;1;R$ 63,99;Sta Rita;08/02/2022;R$ 34,00;R$ 29,99;46,87%
-8;Tênis mormaii;Calçados;1;R$ 120,00;Sta Rita;09/02/2022;R$ 77,68;R$ 42,32;35,27%
-9;Calça preta;Roupas;1;R$ 62,59;Sta Rita;09/02/2022;R$ 34,00;R$ 28,59;45,68%
-10;Calça preta;Roupas;1;R$ 56,00;Sta Rita;10/02/2022;R$ 34,00;R$ 22,00;39,29%
-11;Calça clara;Roupas;1;R$ 64,00;Sta Rita;10/02/2022;R$ 34,00;R$ 30,00;46,88%
-12;Calça preta;Roupas;1;R$ 56,00;Sta Rita;10/02/2022;R$ 34,00;R$ 22,00;39,29%
-13;Calça preta;Roupas;1;R$ 56,00;Sta Rita;11/02/2022;R$ 34,00;R$ 22,00;39,29%
-14;Tênis mormaii;Calçados;1;R$ 112,00;Sta Rita;12/02/2022;R$ 77,68;R$ 34,32;30,64%
-15;Boné chronic;Roupas;1;R$ 56,00;Sta Rita;12/02/2022;R$ 37,90;R$ 18,10;32,32%
-16;Calça clara;Roupas;1;R$ 56,00;Sta Rita;12/02/2022;R$ 34,00;R$ 22,00;39,29%
-17;Tênis mormaii;Calçados;1;R$ 112,00;Sta Rita;12/02/2022;R$ 77,68;R$ 34,32;30,64%
-18;Camiseta chronic;Roupas;1;R$ 39,19;Sta Rita;14/02/2022;R$ 37,90;R$ 1,29;3,29%
-19;Calça preta;Roupas;1;R$ 56,00;Sta Rita;15/02/2022;R$ 34,00;R$ 22,00;39,29%
-20;Camiseta chronic;Roupas;1;R$ 36,02;Sta Rita;15/02/2022;R$ 34,90;R$ 1,12;3,11%
-21;Calça preta;Roupas;1;R$ 56,00;Sta Rita;16/02/2022;R$ 34,00;R$ 22,00;39,29%
-22;Calça preta;Roupas;1;R$ 56,00;Sta Rita;16/02/2022;R$ 34,00;R$ 22,00;39,29%
-23;Calça clara;Roupas;1;R$ 56,00;Sta Rita;17/02/2022;R$ 34,00;R$ 22,00;39,29%
-24;Tênis mormaii;Calçados;1;R$ 104,00;Sta Rita;17/02/2022;R$ 77,68;R$ 26,32;25,31%
-25;Calça preta;Roupas;3;R$ 168,00;Sta Rita;18/02/2022;R$ 34,00;R$ 66,00;39,29%
-26;Calça jeans;Roupas;1;R$ 56,00;Sta Rita;18/02/2022;R$ 34,00;R$ 22,00;39,29%
-27;Tênis vellutti;Calçados;2;R$ 171,20;Sta Rita;19/02/2022;R$ 66,90;R$ 37,40;21,85%
-28;Calça clara;Roupas;1;R$ 56,00;Sta Rita;19/02/2022;R$ 34,00;R$ 22,00;39,29%
-29;Calça jeans;Roupas;1;R$ 56,00;Sta Rita;21/02/2022;R$ 34,00;R$ 22,00;39,29%
-30;Calça preta;Roupas;1;R$ 56,00;Sta Rita;22/02/2022;R$ 34,00;R$ 22,00;39,29%
-31;Tênis mormaii;Calçados;1;R$ 100,00;Sta Rita;23/02/2022;R$ 77,68;R$ 22,32;22,32%
-32;Tênis mormaii;Calçados;1;R$ 100,00;Sta Rita;24/02/2022;R$ 77,68;R$ 22,32;22,32%
-33;Tênis vellutti;Calçados;1;R$ 80,00;Sta Rita;24/02/2022;R$ 66,90;R$ 13,10;16,38%
-34;Calça clara;Roupas;1;R$ 56,00;Sta Rita;24/02/2022;R$ 34,00;R$ 22,00;39,29%
-35;Calça preta;Roupas;3;R$ 168,00;Sta Rita;24/02/2022;R$ 34,00;R$ 66,00;39,29%
-36;Calça jeans;Roupas;1;R$ 56,00;Sta Rita;25/02/2022;R$ 34,00;R$ 22,00;39,29%
-37;Calça preta;Roupas;1;R$ 56,00;Sta Rita;25/02/2022;R$ 34,00;R$ 22,00;39,29%
-38;Tênis mormaii;Calçados;1;R$ 100,00;Sta Rita;25/02/2022;R$ 77,68;R$ 22,32;22,32%
-39;Tênis vellutti;Calçados;1;R$ 80,00;Sta Rita;25/02/2022;R$ 66,90;R$ 13,10;16,38%
-40;Tênis vellutti;Calçados;1;R$ 104,00;Sta Rita;26/02/2022;R$ 66,90;R$ 37,10;35,67%
-41;Calça clara;Roupas;1;R$ 56,00;Sta Rita;26/02/2022;R$ 34,00;R$ 22,00;39,29%
-42;Tênis vellutti;Calçados;1;R$ 80,00;Sta Rita;28/02/2022;R$ 66,90;R$ 13,10;16,38%
-43;Bag;Roupas;1;R$ 56,00;Sta Rita;28/02/2022;R$ 51,90;R$ 4,10;7,32%
-44;Calça preta;Roupas;1;R$ 56,00;Sta Rita;01/03/2022;R$ 34,00;R$ 22,00;39,29%
-45;Tênis mormaii;Calçados;1;R$ 96,00;Sta Rita;02/03/2022;R$ 77,68;R$ 18,32;19,08%
-46;Tênis mormaii;Calçados;1;R$ 77,42;Sta Rita;03/03/2022;R$ 77,68;-R$ 0,26;-0,34%
-47;Tênis mormaii;Calçados;1;R$ 89,99;Sta Rita;03/03/2022;R$ 77,68;R$ 12,31;13,68%
-48;Tênis mormaii;Calçados;2;R$ 162,16;Sta Rita;04/03/2022;R$ 77,68;R$ 6,80;4,19%
-49;Tênis vellutti;Calçados;1;R$ 85,39;Sta Rita;04/03/2022;R$ 66,90;R$ 18,49;21,65%
-50;Tênis vellutti;Calçados;1;R$ 83,60;Sta Rita;04/03/2022;R$ 66,90;R$ 16,70;19,98%
-51;Tênis vellutti;Calçados;2;R$ 154,86;Sta Rita;04/03/2022;R$ 66,90;R$ 21,06;13,60%
-52;Tênis mormaii;Calçados;1;R$ 90,00;Sta Rita;05/03/2022;R$ 77,68;R$ 12,32;13,69%
-53;Camiseta chronic;Roupas;3;R$ 79,99;Sta Rita;08/03/2022;R$ 34,90;-R$ 24,71;-30,89%
-54;Tênis vellutti;Calçados;1;R$ 85,39;Sta Rita;08/03/2022;R$ 66,90;R$ 18,49;21,65%
-55;Boné tommy;Roupas;1;R$ 33,75;Sta Rita;08/03/2022;R$ 17,00;R$ 16,75;49,63%
-56;Camiseta chronic;Roupas;1;R$ 26,66;Sta Rita;09/03/2022;R$ 34,90;-R$ 8,24;-30,91%
-57;Tênis mormaii;Calçados;1;R$ 89,99;Sta Rita;10/03/2022;R$ 77,68;R$ 12,31;13,68%
-58;Tênis mormaii;Calçados;1;R$ 88,20;Sta Rita;11/03/2022;R$ 77,68;R$ 10,52;11,93%
-59;Calça preta;Roupas;1;R$ 56,00;Sta Rita;11/03/2022;R$ 34,00;R$ 22,00;39,29%
-60;Tênis vellutti;Calçados;1;R$ 85,49;Sta Rita;12/03/2022;R$ 66,90;R$ 18,59;21,75%
-61;Calça preta;Roupas;2;R$ 112,00;Sta Rita;12/03/2022;R$ 34,00;R$ 44,00;39,29%
-62;Calça média;Roupas;1;R$ 56,00;Sta Rita;12/03/2022;R$ 34,00;R$ 22,00;39,29%
-63;Calça média;Roupas;1;R$ 56,00;Sta Rita;14/03/2022;R$ 34,00;R$ 22,00;39,29%
-64;Calça jeans;Roupas;1;R$ 56,00;Sta Rita;14/03/2022;R$ 34,00;R$ 22,00;39,29%
-65;Camiseta chronic;Roupas;1;R$ 26,66;Sta Rita;14/03/2022;R$ 34,90;-R$ 8,24;-30,91%
-66;Camiseta chronic;Roupas;1;R$ 21,33;Sta Rita;15/03/2022;R$ 34,90;-R$ 13,57;-63,62%
-67;Calça jogger;Roupas;1;R$ 56,00;Sta Rita;15/03/2022;R$ 34,00;R$ 22,00;39,29%
-68;Calça preta;Roupas;1;R$ 56,00;Sta Rita;15/03/2022;R$ 34,00;R$ 22,00;39,29%
-69;Tênis mormaii;Calçados;1;R$ 80,00;Sta Rita;16/03/2022;R$ 77,68;R$ 2,32;2,90%
-70;Calça jogger;Roupas;1;R$ 56,00;Sta Rita;16/03/2022;R$ 34,00;R$ 22,00;39,29%
+﻿Index;Produto;Tipo;Qtd;Meu retorno;Cidade;Data;Custo;Pdc;Lucro;Lucro %
+2;Bag;Roupas;1;R$ 72,00;Sta Rita;16/01/2022;R$ 51,90;R$ 51,90;R$ 20,10;27,92%
+3;Bag;Roupas;1;R$ 64,00;Cachoeira;05/02/2022;R$ 51,90;R$ 51,90;R$ 12,10;18,91%
+43;Bag;Roupas;1;R$ 56,00;Sta Rita;28/02/2022;R$ 51,90;R$ 51,90;R$ 4,10;7,32%
+15;Boné chronic;Roupas;1;R$ 56,00;Sta Rita;12/02/2022;R$ 37,90;R$ 37,90;R$ 18,10;32,32%
+55;Boné tommy;Roupas;1;R$ 33,75;Sta Rita;08/03/2022;R$ 17,00;R$ 17,00;R$ 16,75;49,63%
+11;Calça clara;Roupas;1;R$ 64,00;Sta Rita;10/02/2022;R$ 34,00;R$ 34,00;R$ 30,00;46,88%
+16;Calça clara;Roupas;1;R$ 56,00;Sta Rita;12/02/2022;R$ 34,00;R$ 34,00;R$ 22,00;39,29%
+23;Calça clara;Roupas;1;R$ 56,00;Sta Rita;17/02/2022;R$ 34,00;R$ 34,00;R$ 22,00;39,29%
+28;Calça clara;Roupas;1;R$ 56,00;Sta Rita;19/02/2022;R$ 34,00;R$ 34,00;R$ 22,00;39,29%
+34;Calça clara;Roupas;1;R$ 56,00;Sta Rita;24/02/2022;R$ 34,00;R$ 34,00;R$ 22,00;39,29%
+41;Calça clara;Roupas;1;R$ 56,00;Sta Rita;26/02/2022;R$ 34,00;R$ 34,00;R$ 22,00;39,29%
+26;Calça jeans;Roupas;1;R$ 56,00;Sta Rita;18/02/2022;R$ 34,00;R$ 34,00;R$ 22,00;39,29%
+29;Calça jeans;Roupas;1;R$ 56,00;Sta Rita;21/02/2022;R$ 34,00;R$ 34,00;R$ 22,00;39,29%
+36;Calça jeans;Roupas;1;R$ 56,00;Sta Rita;25/02/2022;R$ 34,00;R$ 34,00;R$ 22,00;39,29%
+64;Calça jeans;Roupas;1;R$ 56,00;Sta Rita;14/03/2022;R$ 34,00;R$ 34,00;R$ 22,00;39,29%
+67;Calça jogger;Roupas;1;R$ 56,00;Sta Rita;15/03/2022;R$ 34,00;R$ 34,00;R$ 22,00;39,29%
+70;Calça jogger;Roupas;1;R$ 56,00;Sta Rita;16/03/2022;R$ 34,00;R$ 34,00;R$ 22,00;39,29%
+62;Calça média;Roupas;1;R$ 56,00;Sta Rita;12/03/2022;R$ 34,00;R$ 34,00;R$ 22,00;39,29%
+63;Calça média;Roupas;1;R$ 56,00;Sta Rita;14/03/2022;R$ 34,00;R$ 34,00;R$ 22,00;39,29%
+6;Calça preta;Roupas;1;R$ 58,47;Sta Rita;08/02/2022;R$ 34,00;R$ 34,00;R$ 24,47;41,85%
+7;Calça preta;Roupas;1;R$ 63,99;Sta Rita;08/02/2022;R$ 34,00;R$ 34,00;R$ 29,99;46,87%
+9;Calça preta;Roupas;1;R$ 62,59;Sta Rita;09/02/2022;R$ 34,00;R$ 34,00;R$ 28,59;45,68%
+10;Calça preta;Roupas;1;R$ 56,00;Sta Rita;10/02/2022;R$ 34,00;R$ 34,00;R$ 22,00;39,29%
+12;Calça preta;Roupas;1;R$ 56,00;Sta Rita;10/02/2022;R$ 34,00;R$ 34,00;R$ 22,00;39,29%
+13;Calça preta;Roupas;1;R$ 56,00;Sta Rita;11/02/2022;R$ 34,00;R$ 34,00;R$ 22,00;39,29%
+19;Calça preta;Roupas;1;R$ 56,00;Sta Rita;15/02/2022;R$ 34,00;R$ 34,00;R$ 22,00;39,29%
+21;Calça preta;Roupas;1;R$ 56,00;Sta Rita;16/02/2022;R$ 34,00;R$ 34,00;R$ 22,00;39,29%
+22;Calça preta;Roupas;1;R$ 56,00;Sta Rita;16/02/2022;R$ 34,00;R$ 34,00;R$ 22,00;39,29%
+25;Calça preta;Roupas;3;R$ 168,00;Sta Rita;18/02/2022;R$ 34,00;R$ 102,00;R$ 66,00;39,29%
+30;Calça preta;Roupas;1;R$ 56,00;Sta Rita;22/02/2022;R$ 34,00;R$ 34,00;R$ 22,00;39,29%
+35;Calça preta;Roupas;3;R$ 168,00;Sta Rita;24/02/2022;R$ 34,00;R$ 102,00;R$ 66,00;39,29%
+37;Calça preta;Roupas;1;R$ 56,00;Sta Rita;25/02/2022;R$ 34,00;R$ 34,00;R$ 22,00;39,29%
+44;Calça preta;Roupas;1;R$ 56,00;Sta Rita;01/03/2022;R$ 34,00;R$ 34,00;R$ 22,00;39,29%
+59;Calça preta;Roupas;1;R$ 56,00;Sta Rita;11/03/2022;R$ 34,00;R$ 34,00;R$ 22,00;39,29%
+61;Calça preta;Roupas;2;R$ 112,00;Sta Rita;12/03/2022;R$ 34,00;R$ 68,00;R$ 44,00;39,29%
+68;Calça preta;Roupas;1;R$ 56,00;Sta Rita;15/03/2022;R$ 34,00;R$ 34,00;R$ 22,00;39,29%
+1;Camiseta chronic;Roupas;1;R$ 64,00;Sta Rita;12/01/2022;R$ 34,90;R$ 34,90;R$ 29,10;45,47%
+4;Camiseta chronic;Roupas;2;R$ 102,40;Cachoeira;05/02/2022;R$ 34,90;R$ 69,80;R$ 32,60;31,84%
+18;Camiseta chronic;Roupas;1;R$ 39,19;Sta Rita;14/02/2022;R$ 37,90;R$ 37,90;R$ 1,29;3,29%
+20;Camiseta chronic;Roupas;1;R$ 36,02;Sta Rita;15/02/2022;R$ 34,90;R$ 34,90;R$ 1,12;3,11%
+53;Camiseta chronic;Roupas;3;R$ 79,99;Sta Rita;08/03/2022;R$ 34,90;R$ 104,70;-R$ 24,71;-30,89%
+56;Camiseta chronic;Roupas;1;R$ 26,66;Sta Rita;09/03/2022;R$ 34,90;R$ 34,90;-R$ 8,24;-30,91%
+65;Camiseta chronic;Roupas;1;R$ 26,66;Sta Rita;14/03/2022;R$ 34,90;R$ 34,90;-R$ 8,24;-30,91%
+66;Camiseta chronic;Roupas;1;R$ 21,33;Sta Rita;15/03/2022;R$ 34,90;R$ 34,90;-R$ 13,57;-63,62%
+5;Tênis mormaii;Calçados;1;R$ 120,00;Sta Rita;05/02/2022;R$ 77,68;R$ 77,68;R$ 42,32;35,27%
+8;Tênis mormaii;Calçados;1;R$ 120,00;Sta Rita;09/02/2022;R$ 77,68;R$ 77,68;R$ 42,32;35,27%
+14;Tênis mormaii;Calçados;1;R$ 112,00;Sta Rita;12/02/2022;R$ 77,68;R$ 77,68;R$ 34,32;30,64%
+17;Tênis mormaii;Calçados;1;R$ 112,00;Sta Rita;12/02/2022;R$ 77,68;R$ 77,68;R$ 34,32;30,64%
+24;Tênis mormaii;Calçados;1;R$ 104,00;Sta Rita;17/02/2022;R$ 77,68;R$ 77,68;R$ 26,32;25,31%
+31;Tênis mormaii;Calçados;1;R$ 100,00;Sta Rita;23/02/2022;R$ 77,68;R$ 77,68;R$ 22,32;22,32%
+32;Tênis mormaii;Calçados;1;R$ 100,00;Sta Rita;24/02/2022;R$ 77,68;R$ 77,68;R$ 22,32;22,32%
+38;Tênis mormaii;Calçados;1;R$ 100,00;Sta Rita;25/02/2022;R$ 77,68;R$ 77,68;R$ 22,32;22,32%
+45;Tênis mormaii;Calçados;1;R$ 96,00;Sta Rita;02/03/2022;R$ 77,68;R$ 77,68;R$ 18,32;19,08%
+46;Tênis mormaii;Calçados;1;R$ 77,42;Sta Rita;03/03/2022;R$ 77,68;R$ 77,68;-R$ 0,26;-0,34%
+47;Tênis mormaii;Calçados;1;R$ 89,99;Sta Rita;03/03/2022;R$ 77,68;R$ 77,68;R$ 12,31;13,68%
+48;Tênis mormaii;Calçados;2;R$ 162,16;Sta Rita;04/03/2022;R$ 77,68;R$ 155,36;R$ 6,80;4,19%
+52;Tênis mormaii;Calçados;1;R$ 90,00;Sta Rita;05/03/2022;R$ 77,68;R$ 77,68;R$ 12,32;13,69%
+57;Tênis mormaii;Calçados;1;R$ 89,99;Sta Rita;10/03/2022;R$ 77,68;R$ 77,68;R$ 12,31;13,68%
+58;Tênis mormaii;Calçados;1;R$ 88,20;Sta Rita;11/03/2022;R$ 77,68;R$ 77,68;R$ 10,52;11,93%
+69;Tênis mormaii;Calçados;1;R$ 80,00;Sta Rita;16/03/2022;R$ 77,68;R$ 77,68;R$ 2,32;2,90%
+27;Tênis vellutti;Calçados;2;R$ 171,20;Sta Rita;19/02/2022;R$ 66,90;R$ 133,80;R$ 37,40;21,85%
+33;Tênis vellutti;Calçados;1;R$ 80,00;Sta Rita;24/02/2022;R$ 66,90;R$ 66,90;R$ 13,10;16,38%
+39;Tênis vellutti;Calçados;1;R$ 80,00;Sta Rita;25/02/2022;R$ 66,90;R$ 66,90;R$ 13,10;16,38%
+40;Tênis vellutti;Calçados;1;R$ 104,00;Sta Rita;26/02/2022;R$ 66,90;R$ 66,90;R$ 37,10;35,67%
+42;Tênis vellutti;Calçados;1;R$ 80,00;Sta Rita;28/02/2022;R$ 66,90;R$ 66,90;R$ 13,10;16,38%
+49;Tênis vellutti;Calçados;1;R$ 85,39;Sta Rita;04/03/2022;R$ 66,90;R$ 66,90;R$ 18,49;21,65%
+50;Tênis vellutti;Calçados;1;R$ 83,60;Sta Rita;04/03/2022;R$ 66,90;R$ 66,90;R$ 16,70;19,98%
+51;Tênis vellutti;Calçados;2;R$ 154,86;Sta Rita;04/03/2022;R$ 66,90;R$ 133,80;R$ 21,06;13,60%
+54;Tênis vellutti;Calçados;1;R$ 85,39;Sta Rita;08/03/2022;R$ 66,90;R$ 66,90;R$ 18,49;21,65%
+60;Tênis vellutti;Calçados;1;R$ 85,49;Sta Rita;12/03/2022;R$ 66,90;R$ 66,90;R$ 18,59;21,75%
