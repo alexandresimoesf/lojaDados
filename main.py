@@ -145,7 +145,8 @@ infoLoja.roa = vendas['Lucro'].sum()/despesa_ativo_pago
 infoLoja.roi = (vendas['Meu retorno'].sum() - despesa_ativo_pago)/despesa_ativo_pago
 infoLoja.roic = vendas['Lucro'].sum()/((-infoLoja.caixa if infoLoja.caixa < 0 else infoLoja.caixa) + despesa_ativo_total)
 infoLoja.passivo = despesas[despesas['Pago'] == 'Não']['Saiu'].sum()
-print(infoLoja.roa)
+roe = vendas['Lucro'].sum()/(despesa_ativo_total-infoLoja.passivo)
+print(roe)
 
 infoLoja.venda_info_mensal = vendas.groupby([vendas['Data'].dt.month]).sum().reset_index()
 infoLoja.venda_info_mensal['Margem Liquida'] = infoLoja.venda_info_mensal['Lucro']/infoLoja.venda_info_mensal['Meu retorno']
