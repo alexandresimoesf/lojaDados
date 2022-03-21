@@ -66,6 +66,22 @@ class loja:
         self._roa = valor
 
     @property
+    def roi(self):
+        return self._roi
+
+    @roi.setter
+    def roi(self, valor):
+        self._roi = valor
+
+    @property
+    def roic(self):
+        return self._roic
+
+    @roic.setter
+    def roic(self, valor):
+        self._roic = valor
+
+    @property
     def passivo(self):
         return self._passivo
 
@@ -121,10 +137,15 @@ vendas = vendas.drop(columns='Index')
 infoLoja = loja()
 infoLoja.meses = set(vendas['Data'].dt.month)
 infoLoja.margemLiquida = vendas['Lucro'].sum()/vendas['Meu retorno'].sum()
-infoLoja.caixa = vendas['Meu retorno'].sum() - despesas['Saiu'].sum()
+infoLoja.caixa = vendas['Meu retorno'].sum() - despesas[despesas['Pago'] == 'Sim']['Saiu'].sum()
 infoLoja.estoque = despesas[despesas['Ativo'] == 'Sim']['Saiu'].sum() - vendas['Pdc'].sum()
-infoLoja.roa = vendas['Lucro'].sum()/despesas[despesas['Ativo'] == 'Sim']['Saiu'].sum()
+despesa_ativo_pago = despesas[(despesas['Ativo'] == 'Sim') & (despesas['Pago'] == 'Sim')]['Saiu'].sum()
+despesa_ativo_total = despesas[despesas['Ativo'] == 'Sim']['Saiu'].sum()
+infoLoja.roa = vendas['Lucro'].sum()/despesa_ativo_pago
+infoLoja.roi = (vendas['Meu retorno'].sum() - despesa_ativo_pago)/despesa_ativo_pago
+infoLoja.roic = vendas['Lucro'].sum()/((-infoLoja.caixa if infoLoja.caixa < 0 else infoLoja.caixa) + despesa_ativo_total)
 infoLoja.passivo = despesas[despesas['Pago'] == 'Não']['Saiu'].sum()
+print(infoLoja.roa)
 
 infoLoja.venda_info_mensal = vendas.groupby([vendas['Data'].dt.month]).sum().reset_index()
 infoLoja.venda_info_mensal['Margem Liquida'] = infoLoja.venda_info_mensal['Lucro']/infoLoja.venda_info_mensal['Meu retorno']
@@ -135,7 +156,7 @@ infoLoja.venda_info_mensal['Caixa'] = infoLoja.venda_info_mensal['Meu retorno'].
 infoLoja.venda_info_mensal['Ativos'] = despesas_mensal['Cumsum'] - infoLoja.venda_info_mensal['Pdc'].cumsum()
 infoLoja.venda_info_mensal['Roa'] = infoLoja.venda_info_mensal['Lucro'] / infoLoja.venda_info_mensal['Ativos']
 infoLoja.venda_info_mensal['Ticket médio'] = infoLoja.venda_info_mensal['Meu retorno']/infoLoja.venda_info_mensal['Qtd']
-print(infoLoja.venda_info_mensal)
+# print(infoLoja.venda_info_mensal)
 
 venda_produto = vendas.groupby(['Produto', vendas['Data'].dt.month]).sum().reset_index()
 venda_produto['Margem Líquida'] = venda_produto['Lucro'] / venda_produto['Meu retorno'] * 100
