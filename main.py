@@ -1,5 +1,6 @@
 from datetime import date
 from functools import reduce
+import calendar
 
 import numpy as np
 import pandas as pd
@@ -8,48 +9,6 @@ from pandas import set_option
 set_option('display.max_rows', 500)
 set_option('display.max_columns', 500)
 set_option('display.width', 2000)
-
-
-class lojaMes:
-    @property
-    def margemLiquida(self):
-        return self._margemLiquida
-
-    @margemLiquida.setter
-    def margemLiquida(self, valor):
-        self._margemLiquida = valor
-
-    @property
-    def caixa(self):
-        return self._caixa
-
-    @caixa.setter
-    def caixa(self, valor):
-        self._caixa = valor
-
-    @property
-    def estoque(self):
-        return self._estoque
-
-    @estoque.setter
-    def estoque(self, valor):
-        self._estoque = valor
-
-    @property
-    def roa(self):
-        return self._roa
-
-    @roa.setter
-    def roa(self, valor):
-        self._roa = valor
-
-    @property
-    def entrou_do_mes_passado(self):
-        return self._entrou_do_mes_passado
-
-    @entrou_do_mes_passado.setter
-    def entrou_do_mes_passado(self, valor):
-        self._entrou_do_mes_passado = valor
 
 
 class loja:
@@ -107,6 +66,14 @@ class loja:
         self._roa = valor
 
     @property
+    def passivo(self):
+        return self._passivo
+
+    @passivo.setter
+    def passivo(self, valor):
+        self._passivo = valor
+
+    @property
     def venda_info_mensal(self):
         return self._venda_info_mensal
 
@@ -129,7 +96,6 @@ def to_number(valor):
 
 def valorizar(valor, mes):
     v = reduce(lambda x, y: x*y, infoLoja.capitalizacao[mes:])
-    # print(v)
     return valor * v
 
 
@@ -158,12 +124,21 @@ infoLoja.margemLiquida = vendas['Lucro'].sum()/vendas['Meu retorno'].sum()
 infoLoja.caixa = vendas['Meu retorno'].sum() - despesas['Saiu'].sum()
 infoLoja.estoque = despesas[despesas['Ativo'] == 'Sim']['Saiu'].sum() - vendas['Pdc'].sum()
 infoLoja.roa = vendas['Lucro'].sum()/despesas[despesas['Ativo'] == 'Sim']['Saiu'].sum()
+infoLoja.passivo = despesas[despesas['Pago'] == 'Não']['Saiu'].sum()
 
 infoLoja.venda_info_mensal = vendas.groupby([vendas['Data'].dt.month]).sum().reset_index()
 infoLoja.venda_info_mensal['Margem Liquida'] = infoLoja.venda_info_mensal['Lucro']/infoLoja.venda_info_mensal['Meu retorno']
-despesas_mensal = despesas[(despesas['Pago'] == 'Sim')].groupby((despesas['Período'].dt.month)).sum().reset_index()
+despesas_mensal = despesas.groupby(despesas['Período'].dt.month).sum().reset_index()
 despesas_mensal['Cumsum'] = despesas_mensal['Saiu'].cumsum()
+infoLoja.venda_info_mensal['Obrigações'] = despesas_mensal['Saiu']
 infoLoja.venda_info_mensal['Caixa'] = infoLoja.venda_info_mensal['Meu retorno'].cumsum() - despesas_mensal['Cumsum']
-infoLoja.venda_info_mensal['Estoque'] = despesas_mensal['Cumsum'] - infoLoja.venda_info_mensal['Pdc'].cumsum()
-infoLoja.venda_info_mensal['Roe'] = infoLoja.venda_info_mensal['Lucro'] / infoLoja.venda_info_mensal['Estoque']
+infoLoja.venda_info_mensal['Ativos'] = despesas_mensal['Cumsum'] - infoLoja.venda_info_mensal['Pdc'].cumsum()
+infoLoja.venda_info_mensal['Roa'] = infoLoja.venda_info_mensal['Lucro'] / infoLoja.venda_info_mensal['Ativos']
+infoLoja.venda_info_mensal['Ticket médio'] = infoLoja.venda_info_mensal['Meu retorno']/infoLoja.venda_info_mensal['Qtd']
 print(infoLoja.venda_info_mensal)
+
+venda_produto = vendas.groupby(['Produto', vendas['Data'].dt.month]).sum().reset_index()
+venda_produto['Margem Líquida'] = venda_produto['Lucro'] / venda_produto['Meu retorno'] * 100
+venda_produto['Data'] = venda_produto['Data'].apply(lambda x: calendar.month_name[x])
+venda_produto = venda_produto.groupby(['Data', 'Produto']).sum()
+# print(venda_produto)
