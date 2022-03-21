@@ -141,7 +141,6 @@ month = date.today().month
 despesas = pd.read_csv('despesas.csv', sep=";", encoding='latin-1').dropna()
 despesas['Período'] = pd.to_datetime(despesas['Período'], dayfirst=True)
 despesas['Saiu'] = despesas['Saiu'].apply(to_number)
-despesas['Entrou'] = despesas['Entrou'].apply(to_number)
 # print(despesas)
 
 vendas = pd.read_csv('vendas_loja.csv', sep=";", encoding='utf-8').dropna()
@@ -162,9 +161,9 @@ infoLoja.roa = vendas['Lucro'].sum()/despesas[despesas['Ativo'] == 'Sim']['Saiu'
 
 infoLoja.venda_info_mensal = vendas.groupby([vendas['Data'].dt.month]).sum().reset_index()
 infoLoja.venda_info_mensal['Margem Liquida'] = infoLoja.venda_info_mensal['Lucro']/infoLoja.venda_info_mensal['Meu retorno']
-despesas_mensal = despesas.groupby(despesas['Período'].dt.month).sum().reset_index()
+despesas_mensal = despesas[(despesas['Pago'] == 'Sim')].groupby((despesas['Período'].dt.month)).sum().reset_index()
 despesas_mensal['Cumsum'] = despesas_mensal['Saiu'].cumsum()
 infoLoja.venda_info_mensal['Caixa'] = infoLoja.venda_info_mensal['Meu retorno'].cumsum() - despesas_mensal['Cumsum']
-infoLoja.venda_info_mensal['Estoque'] = despesas_mensal['Cumsum'] - infoLoja.venda_info_mensal['Pdc']
+infoLoja.venda_info_mensal['Estoque'] = despesas_mensal['Cumsum'] - infoLoja.venda_info_mensal['Pdc'].cumsum()
 infoLoja.venda_info_mensal['Roe'] = infoLoja.venda_info_mensal['Lucro'] / infoLoja.venda_info_mensal['Estoque']
 print(infoLoja.venda_info_mensal)

@@ -1,11 +1,18 @@
-Index;Pagamento;Saiu;Entrou;Período;Pago;Ativo
-0;Maquininha;-R$ 300,00;R$ 0,00;11/01/2022;Sim;Não
-1;Chronic;-R$ 1.067,20;R$ 422,40;11/01/2022;Sim;Sim
-2;Fato;-R$ 748,00;R$ 873,05;07/02/2022;Sim;Sim
-3;Fato;-R$ 840,00;R$ 854,41;14/02/2022;Sim;Sim
-4;Fato;-R$ 902,00;R$ 616,00;21/02/2022;Sim;Sim
-5;Tênis mormaii;-R$ 1.165,92;R$ 644,00;25/02/2022;Sim;Sim
-6;Fato;-R$ 428,00;R$ 749,42;02/03/2022;Sim;Sim
-7;Boné;-R$ 117,00;R$ 549,98;05/03/2022;Sim;Sim
-8;Bag;-R$ 181,00;R$ 253,49;12/03/2022;Sim;Sim
-9;Fato e grs;-R$ 1.048,00;R$ 407,99;14/03/2022;Sim;Sim
+Index;Pagamento;Saiu;Período;Pago;Ativo
+0;Maquininha;-R$ 300,00;11/01/2022;Sim;Não
+1;Chronic;-R$ 1.067,20;11/01/2022;Sim;Sim
+2;Fato;-R$ 748,00;07/02/2022;Sim;Sim
+3;Fato;-R$ 840,00;14/02/2022;Sim;Sim
+4;Fato;-R$ 902,00;21/02/2022;Sim;Sim
+5;Tênis mormaii;-R$ 1.165,92;25/02/2022;Sim;Sim
+6;Fato;-R$ 428,00;02/03/2022;Sim;Sim
+7;Boné;-R$ 117,00;05/03/2022;Sim;Sim
+8;Bag;-R$ 181,00;12/03/2022;Sim;Sim
+9;Fato e grs;-R$ 1.048,00;14/03/2022;Sim;Sim
+10;Das;-R$ 61,60;21/03/2022;Sim;Não
+11;Tênis mormaii;-R$ 1.165,92;30/03/2022;Não;Sim
+12;Tênis mormaii;-R$ 1.165,92;29/04/2022;Não;Sim
+13;Tênis mormaii;-R$ 1.165,92;29/05/2022;Não;Sim
+14;Tênis velluti;-R$ 1.606,20;13/04/2022;Não;Sim
+15;Tênis velluti;-R$ 1.606,20;13/05/2022;Não;Sim
+16;Tênis velluti;-R$ 1.606,20;12/06/2022;Não;Sim
