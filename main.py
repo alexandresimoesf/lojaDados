@@ -170,4 +170,5 @@ venda_produto = venda_produto.drop(columns='Margem Liquida')
 venda_produto['Data'] = venda_produto['Data'].apply(lambda x: calendar.month_name[x])
 venda_produto = venda_produto.groupby(['Produto']).sum()
 venda_produto['Pvm'] = venda_produto['Retorno Distribuido']/venda_produto['Qtd']
-# print(venda_produto)
+print(venda_produto)
+print(infoLoja.caixa)
