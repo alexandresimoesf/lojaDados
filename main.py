@@ -136,6 +136,10 @@ vendas['Data'] = pd.to_datetime(vendas['Data'], dayfirst=True)
 vendas = vendas.drop(columns='Index')
 # print(vendas.groupby(['Produto']).sum())
 
+compras = pd.read_csv('compras.csv', sep=";", encoding='latin-1').dropna()
+compras = compras.groupby(['Data', 'Produto']).sum()
+# print(compras)
+
 
 infoLoja = loja()
 infoLoja.meses = set(vendas['Data'].dt.month)
@@ -171,10 +175,10 @@ venda_produto_geral = venda_produto_geral.drop(columns='Margem Liquida')
 venda_produto_geral['Data'] = venda_produto_geral['Data'].apply(lambda x: calendar.month_name[x])
 venda_produto_geral = venda_produto_geral.groupby(['Produto']).sum()
 venda_produto_geral['Pvm'] = venda_produto_geral['Retorno Distribuido']/venda_produto_geral['Qtd']
-# print(venda_produto_geral)
+print(venda_produto_geral)
 
 venda_produto_semanal = vendas.groupby([vendas['Data']]).sum().drop(columns={'Pdc'})
 venda_produto_semanal['Média 6 qtd'] = venda_produto_semanal['Qtd'].rolling(6).sum()
 venda_produto_semanal['Média 6 retorno'] = venda_produto_semanal['Meu retorno'].rolling(6).sum()
 venda_produto_semanal['Média 6 lucro'] = venda_produto_semanal['Lucro'].rolling(6).sum()
-print(venda_produto_semanal.sort_values(by=['Data'], ascending=False))
+# print(venda_produto_semanal.sort_values(by=['Data'], ascending=False))
