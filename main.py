@@ -129,9 +129,11 @@ vendas = pd.read_csv('vendas_loja.csv', sep=";", encoding='utf-8').dropna()
 vendas['Pdc'] = vendas['Pdc'].apply(to_number)
 vendas['Pdc'] = vendas['Pdc'] * vendas['Qtd']
 vendas['Meu retorno'] = vendas['Meu retorno'].apply(to_number)
+# vendas['Meu retorno'] = vendas['Meu retorno'] * vendas['Qtd']
 vendas['Lucro'] = vendas['Meu retorno'] - (vendas['Pdc'])
 vendas['Data'] = pd.to_datetime(vendas['Data'], dayfirst=True)
 vendas = vendas.drop(columns='Index')
+# print(vendas.groupby(['Produto']).sum())
 
 
 infoLoja = loja()
@@ -146,7 +148,6 @@ infoLoja.roi = (vendas['Meu retorno'].sum() - despesa_ativo_pago)/despesa_ativo_
 infoLoja.roic = vendas['Lucro'].sum()/(infoLoja.caixa + despesa_ativo_total)
 infoLoja.passivo = despesas[(despesas['Ativo'] == 'Sim') & (despesas['Pago'] == 'Não')]['Saiu'].sum()
 roe = vendas['Lucro'].sum()/(despesa_ativo_pago-infoLoja.passivo)
-# print(infoLoja.)
 
 infoLoja.venda_info_mensal = vendas.groupby([vendas['Data'].dt.month]).sum().reset_index()
 infoLoja.venda_info_mensal['Margem Liquida'] = infoLoja.venda_info_mensal['Lucro']/infoLoja.venda_info_mensal['Meu retorno']
@@ -169,4 +170,4 @@ venda_produto = venda_produto.drop(columns='Margem Liquida')
 venda_produto['Data'] = venda_produto['Data'].apply(lambda x: calendar.month_name[x])
 venda_produto = venda_produto.groupby(['Produto']).sum()
 venda_produto['Pvm'] = venda_produto['Retorno Distribuido']/venda_produto['Qtd']
-print(venda_produto)
+# print(venda_produto)
