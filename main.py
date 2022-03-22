@@ -143,10 +143,10 @@ despesa_ativo_pago = despesas[(despesas['Ativo'] == 'Sim') & (despesas['Pago'] =
 despesa_ativo_total = despesas[despesas['Ativo'] == 'Sim']['Saiu'].sum()
 infoLoja.roa = vendas['Lucro'].sum()/despesa_ativo_pago
 infoLoja.roi = (vendas['Meu retorno'].sum() - despesa_ativo_pago)/despesa_ativo_pago
-infoLoja.roic = vendas['Lucro'].sum()/((-infoLoja.caixa if infoLoja.caixa < 0 else infoLoja.caixa) + despesa_ativo_total)
-infoLoja.passivo = despesas[despesas['Pago'] == 'Não']['Saiu'].sum()
-roe = vendas['Lucro'].sum()/(despesa_ativo_total-infoLoja.passivo)
-print(roe)
+infoLoja.roic = vendas['Lucro'].sum()/(infoLoja.caixa + despesa_ativo_total)
+infoLoja.passivo = despesas[(despesas['Ativo'] == 'Sim') & (despesas['Pago'] == 'Não')]['Saiu'].sum()
+roe = vendas['Lucro'].sum()/(despesa_ativo_pago-infoLoja.passivo)
+# print(infoLoja.)
 
 infoLoja.venda_info_mensal = vendas.groupby([vendas['Data'].dt.month]).sum().reset_index()
 infoLoja.venda_info_mensal['Margem Liquida'] = infoLoja.venda_info_mensal['Lucro']/infoLoja.venda_info_mensal['Meu retorno']
@@ -157,10 +157,16 @@ infoLoja.venda_info_mensal['Caixa'] = infoLoja.venda_info_mensal['Meu retorno'].
 infoLoja.venda_info_mensal['Ativos'] = despesas_mensal['Cumsum'] - infoLoja.venda_info_mensal['Pdc'].cumsum()
 infoLoja.venda_info_mensal['Roa'] = infoLoja.venda_info_mensal['Lucro'] / infoLoja.venda_info_mensal['Ativos']
 infoLoja.venda_info_mensal['Ticket médio'] = infoLoja.venda_info_mensal['Meu retorno']/infoLoja.venda_info_mensal['Qtd']
-# print(infoLoja.venda_info_mensal)
 
 venda_produto = vendas.groupby(['Produto', vendas['Data'].dt.month]).sum().reset_index()
 venda_produto['Margem Líquida'] = venda_produto['Lucro'] / venda_produto['Meu retorno'] * 100
+# venda_produto['Data'] = venda_produto['Data'].apply(lambda x: calendar.month_name[x])
+venda_produto = venda_produto.groupby(['Data', 'Produto']).sum().reset_index()
+venda_produto = venda_produto.merge(infoLoja.venda_info_mensal[['Data', 'Margem Liquida']], left_on='Data', right_on='Data')
+venda_produto['Distribuido'] = venda_produto['Meu retorno'] * venda_produto['Margem Liquida']
+venda_produto['Retorno Distribuido'] = venda_produto['Distribuido'] + venda_produto['Pdc']
+venda_produto = venda_produto.drop(columns='Margem Liquida')
 venda_produto['Data'] = venda_produto['Data'].apply(lambda x: calendar.month_name[x])
-venda_produto = venda_produto.groupby(['Data', 'Produto']).sum()
-# print(venda_produto)
+venda_produto = venda_produto.groupby(['Produto']).sum()
+venda_produto['Pvm'] = venda_produto['Retorno Distribuido']/venda_produto['Qtd']
+print(venda_produto)
