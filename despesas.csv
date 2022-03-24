@@ -4,18 +4,20 @@ Index;Pagamento;Saiu;Período;Pago;Ativo
 2;Fato;-R$ 748,00;07/02/2022;Sim;Sim
 3;Fato;-R$ 840,00;14/02/2022;Sim;Sim
 4;Fato;-R$ 902,00;21/02/2022;Sim;Sim
+18;Das;-R$ 61,60;21/02/2022;Sim;Não
 5;Tênis mormaii;-R$ 1.165,92;25/02/2022;Sim;Sim
 6;Fato;-R$ 428,00;02/03/2022;Sim;Sim
 7;Boné Tommy;-R$ 117,00;05/03/2022;Sim;Sim
 8;Bag;-R$ 181,00;12/03/2022;Sim;Sim
 9;Fato e grs;-R$ 1.048,00;14/03/2022;Sim;Sim
 10;Das;-R$ 61,60;21/03/2022;Sim;Não
-11;Tênis mormaii;-R$ 1.165,92;30/03/2022;Não;Sim
-12;Tênis mormaii;-R$ 1.165,92;29/04/2022;Não;Sim
-13;Tênis mormaii;-R$ 1.165,92;29/05/2022;Não;Sim
-14;Tênis velluti;-R$ 1.606,20;13/04/2022;Não;Sim
-15;Tênis velluti;-R$ 1.606,20;13/05/2022;Não;Sim
-16;Tênis velluti;-R$ 1.606,20;12/06/2022;Não;Sim
 17;Vitrine;-R$ 100,00;22/03/2022;Sim;Sim
-18;Das;-R$ 61,60;21/02/2022;Sim;Não
 19;Boné Tommy;-R$ 216,00;24/03/2022;Sim;Sim
+20;Camiseta cyclone;-R$ 200,00;24/03/2022;Sim;Sim
+11;Tênis mormaii;-R$ 1.165,92;30/03/2022;Não;Sim
+14;Tênis velluti;-R$ 1.606,20;13/04/2022;Não;Sim
+12;Tênis mormaii;-R$ 1.165,92;29/04/2022;Não;Sim
+15;Tênis velluti;-R$ 1.606,20;13/05/2022;Não;Sim
+13;Tênis mormaii;-R$ 1.165,92;29/05/2022;Não;Sim
+16;Tênis velluti;-R$ 1.606,20;12/06/2022;Não;Sim
+;;;;;
