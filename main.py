@@ -91,12 +91,12 @@ class loja:
         self._passivo = valor
 
     @property
-    def venda_info_semanal(self):
-        return self._venda_info_semanal
+    def venda_info_mensal(self):
+        return self._venda_info_mensal
 
-    @venda_info_semanal.setter
-    def venda_info_semanal(self, valor):
-        self._venda_info_semanal = valor
+    @venda_info_mensal.setter
+    def venda_info_mensal(self, valor):
+        self._venda_info_mensal = valor
 
     @property
     def capitalizacao(self):
@@ -153,32 +153,34 @@ infoLoja.roi = (vendas['Meu retorno'].sum() - despesa_ativo_pago)/despesa_ativo_
 infoLoja.roic = vendas['Lucro'].sum()/(infoLoja.caixa + despesa_ativo_total)
 infoLoja.passivo = despesas[(despesas['Ativo'] == 'Sim') & (despesas['Pago'] == 'Não')]['Saiu'].sum()
 roe = vendas['Lucro'].sum()/(despesa_ativo_pago-infoLoja.passivo)
+# print(infoLoja.estoque)
 
 
-infoLoja.venda_info_semanal = vendas.groupby([vendas['Data'].dt.month]).sum().reset_index()
-infoLoja.venda_info_semanal['Margem Liquida'] = infoLoja.venda_info_semanal['Lucro']/infoLoja.venda_info_semanal['Meu retorno']
-despesas_semanal = despesas.groupby(despesas['Período'].dt.month).sum().reset_index()
-despesas_semanal['Cumsum'] = despesas_semanal['Saiu'].cumsum()
-infoLoja.venda_info_semanal['Obrigações'] = despesas_semanal['Saiu']
-infoLoja.venda_info_semanal['Caixa'] = infoLoja.venda_info_semanal['Meu retorno'].cumsum() - despesas_semanal['Cumsum']
-infoLoja.venda_info_semanal['Ativos'] = despesas_semanal['Cumsum'] - infoLoja.venda_info_semanal['Pdc'].cumsum()
-infoLoja.venda_info_semanal['Roa'] = infoLoja.venda_info_semanal['Lucro'] / infoLoja.venda_info_semanal['Ativos']
-infoLoja.venda_info_semanal['Ticket médio'] = infoLoja.venda_info_semanal['Meu retorno']/infoLoja.venda_info_semanal['Qtd']
+infoLoja.venda_info_mensal = vendas.groupby([vendas['Data'].dt.month]).sum().reset_index()
+infoLoja.venda_info_mensal['Margem Liquida'] = infoLoja.venda_info_mensal['Lucro']/infoLoja.venda_info_mensal['Meu retorno']
+despesas_mensal = despesas.groupby(despesas['Período'].dt.month).sum().reset_index()
+despesas_mensal['Cumsum'] = despesas_mensal['Saiu'].cumsum()
+infoLoja.venda_info_mensal['Obrigações'] = despesas_mensal['Saiu']
+infoLoja.venda_info_mensal['Caixa'] = infoLoja.venda_info_mensal['Meu retorno'] - despesas_mensal['Saiu']
+infoLoja.venda_info_mensal['Ativos'] = despesas_mensal['Cumsum'] - infoLoja.venda_info_mensal['Pdc'].cumsum()
+infoLoja.venda_info_mensal['Roa'] = infoLoja.venda_info_mensal['Lucro'] / infoLoja.venda_info_mensal['Ativos']
+infoLoja.venda_info_mensal['Ticket médio'] = infoLoja.venda_info_mensal['Meu retorno']/infoLoja.venda_info_mensal['Qtd']
+print(infoLoja.venda_info_mensal)
 
 venda_produto_geral = vendas.groupby(['Produto', vendas['Data'].dt.month]).sum().reset_index()
 venda_produto_geral['Margem Líquida'] = venda_produto_geral['Lucro'] / venda_produto_geral['Meu retorno'] * 100
 venda_produto_geral = venda_produto_geral.groupby(['Data', 'Produto']).sum().reset_index()
-venda_produto_geral = venda_produto_geral.merge(infoLoja.venda_info_semanal[['Data', 'Margem Liquida']], left_on='Data', right_on='Data')
+venda_produto_geral = venda_produto_geral.merge(infoLoja.venda_info_mensal[['Data', 'Margem Liquida']], left_on='Data', right_on='Data')
 venda_produto_geral['Distribuido'] = venda_produto_geral['Meu retorno'] * venda_produto_geral['Margem Liquida']
 venda_produto_geral['Retorno Distribuido'] = venda_produto_geral['Distribuido'] + venda_produto_geral['Pdc']
 venda_produto_geral = venda_produto_geral.drop(columns='Margem Liquida')
 venda_produto_geral['Data'] = venda_produto_geral['Data'].apply(lambda x: calendar.month_name[x])
 venda_produto_geral = venda_produto_geral.groupby(['Produto']).sum()
 venda_produto_geral['Pvm'] = venda_produto_geral['Retorno Distribuido']/venda_produto_geral['Qtd']
-print(venda_produto_geral)
+# print(venda_produto_geral)
 
 venda_produto_semanal = vendas.groupby([vendas['Data']]).sum().drop(columns={'Pdc'})
 venda_produto_semanal['Média 6 qtd'] = venda_produto_semanal['Qtd'].rolling(6).sum()
 venda_produto_semanal['Média 6 retorno'] = venda_produto_semanal['Meu retorno'].rolling(6).sum()
 venda_produto_semanal['Média 6 lucro'] = venda_produto_semanal['Lucro'].rolling(6).sum()
-# print(venda_produto_semanal.sort_values(by=['Data'], ascending=False))
+# print(venda_produto_semanal)
