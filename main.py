@@ -152,9 +152,8 @@ infoLoja.roa = vendas['Lucro'].sum()/despesa_ativo_pago
 infoLoja.roi = (vendas['Meu retorno'].sum() - despesa_ativo_pago)/despesa_ativo_pago
 infoLoja.roic = vendas['Lucro'].sum()/(infoLoja.caixa + despesa_ativo_total)
 infoLoja.passivo = despesas[(despesas['Ativo'] == 'Sim') & (despesas['Pago'] == 'Não')]['Saiu'].sum()
-roe = vendas['Lucro'].sum()/(despesa_ativo_pago-infoLoja.passivo)
-print(infoLoja.estoque)
-print(infoLoja.caixa)
+roe = vendas['Lucro'].sum()/(despesa_ativo_pago-infoLoja.passivo+infoLoja.caixa)
+# print(infoLoja.roic)
 
 
 infoLoja.venda_info_mensal = vendas.groupby([vendas['Data'].dt.month]).sum().reset_index()
@@ -165,6 +164,7 @@ infoLoja.venda_info_mensal['Obrigações'] = despesas_mensal['Saiu']
 infoLoja.venda_info_mensal['Caixa'] = infoLoja.venda_info_mensal['Meu retorno'] - despesas_mensal['Saiu']
 infoLoja.venda_info_mensal['Ativos'] = despesas_mensal['Ativos cumulativos'] - infoLoja.venda_info_mensal['Pdc'].cumsum()
 infoLoja.venda_info_mensal['Roa'] = infoLoja.venda_info_mensal['Lucro'] / infoLoja.venda_info_mensal['Ativos']
+infoLoja.venda_info_mensal['Roi'] = (infoLoja.venda_info_mensal['Meu retorno'] - infoLoja.venda_info_mensal['Ativos']) / infoLoja.venda_info_mensal['Ativos']
 infoLoja.venda_info_mensal['Ticket médio'] = infoLoja.venda_info_mensal['Meu retorno']/infoLoja.venda_info_mensal['Qtd']
 print(infoLoja.venda_info_mensal)
 
