@@ -1,4 +1,4 @@
-﻿Index;Produto;Tipo;Qtd;Meu retorno;Cidade;Data;Pdc
+﻿Index;Produto;Tipo;Qtd;Receita;Cidade;Data;Pdc
 1;Camiseta chronic;Roupas;1;R$ 64,00;Sta Rita;12/01/2022;R$ 34,90
 2;Bag chronic;Roupas;1;R$ 72,00;Sta Rita;16/01/2022;R$ 51,90
 3;Bag chronic;Roupas;1;R$ 64,00;Cachoeira;05/02/2022;R$ 51,90
