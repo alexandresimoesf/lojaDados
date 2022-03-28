@@ -172,7 +172,7 @@ infoLoja.venda_info_mensal['Caixa'] = infoLoja.venda_info_mensal['Receita'] - de
 infoLoja.venda_info_mensal['Ativos'] = despesas_mensal['Ativos cumulativos'] - infoLoja.venda_info_mensal['Pdc'].cumsum()
 infoLoja.venda_info_mensal['Roa'] = infoLoja.venda_info_mensal['Lucro'] / infoLoja.venda_info_mensal['Ativos']
 infoLoja.venda_info_mensal['Ticket médio'] = infoLoja.venda_info_mensal['Receita']/infoLoja.venda_info_mensal['Qtd']
-print(infoLoja.venda_info_mensal)
+# print(infoLoja.venda_info_mensal)
 
 
 venda_produto_geral = vendas.groupby(['Produto', vendas['Data'].dt.month]).sum().reset_index()
@@ -195,4 +195,4 @@ venda_produto_semanal = vendas.groupby([vendas['Data']]).sum().drop(columns={'Pd
 venda_produto_semanal['Média 6 qtd'] = venda_produto_semanal['Qtd'].rolling(6).sum()
 venda_produto_semanal['Média 6 retorno'] = venda_produto_semanal['Receita'].rolling(6).sum()
 venda_produto_semanal['Média 6 lucro'] = venda_produto_semanal['Lucro'].rolling(6).sum()
-# print(venda_produto_semanal)
+print(venda_produto_semanal)
