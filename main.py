@@ -131,7 +131,7 @@ vendas['Pdc'] = vendas['Pdc'].apply(to_number)
 vendas['Pdc'] = vendas['Pdc'] * vendas['Qtd']
 vendas['Receita'] = vendas['Receita'].apply(to_number)
 # vendas['Receita'] = vendas['Receita'] * vendas['Qtd']
-vendas['Lucro'] = vendas['Receita'] - (vendas['Pdc'])
+vendas['Lucro'] = (vendas['Receita'] - vendas['Pdc'])
 vendas['Data'] = pd.to_datetime(vendas['Data'], dayfirst=True)
 vendas = vendas.drop(columns='Index')
 # print(vendas.groupby(['Produto']).sum())
@@ -154,7 +154,7 @@ infoLoja.roic = vendas['Lucro'].sum()/(infoLoja.caixa + despesa_ativo_total)
 infoLoja.passivo = despesas[(despesas['Ativo'] == 'Sim') & (despesas['Pago'] == 'Não')]['Saiu'].sum()
 roe = vendas['Lucro'].sum()/(despesa_ativo_pago-infoLoja.passivo+infoLoja.caixa)
 # print(infoLoja.roic)
-# print(infoLoja.caixa)
+print(infoLoja.caixa)
 
 
 infoLoja.venda_info_mensal = vendas.groupby([vendas['Data'].dt.month]).sum().reset_index()
@@ -176,15 +176,14 @@ print(infoLoja.venda_info_mensal)
 # print(infoLoja.roa)
 
 venda_produto_geral = vendas.groupby(['Produto', vendas['Data'].dt.month]).sum().reset_index()
-venda_produto_geral['Margem Líquida'] = venda_produto_geral['Lucro'] / venda_produto_geral['Receita'] * 100
+venda_produto_geral['Margem Líquida'] = venda_produto_geral['Lucro'] / venda_produto_geral['Receita']
 venda_produto_geral = venda_produto_geral.groupby(['Data', 'Produto']).sum().reset_index()
 venda_produto_geral = venda_produto_geral.merge(infoLoja.venda_info_mensal[['Data', 'Margem Liquida']], left_on='Data', right_on='Data')
 venda_produto_geral['Lucro Distribuido'] = venda_produto_geral['Receita'] * venda_produto_geral['Margem Liquida']
 venda_produto_geral['Retorno Distribuido'] = venda_produto_geral['Lucro Distribuido'] + venda_produto_geral['Pdc']
 venda_produto_geral = venda_produto_geral.drop(columns='Margem Liquida')
 venda_produto_geral['Data'] = venda_produto_geral['Data'].apply(lambda x: calendar.month_name[x])
-# venda_produto_geral = venda_produto_geral.groupby(['Produto', 'Data']).sum()
-venda_produto_geral = venda_produto_geral.groupby(['Produto']).sum()
+venda_produto_geral = venda_produto_geral.groupby(['Produto', 'Data']).sum()
 venda_produto_geral['Pvm'] = venda_produto_geral['Retorno Distribuido']/venda_produto_geral['Qtd']
 # print(venda_produto_geral)
 # print(infoLoja.caixa)
