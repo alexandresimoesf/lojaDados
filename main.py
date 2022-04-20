@@ -136,6 +136,7 @@ vendas['Data'] = pd.to_datetime(vendas['Data'], dayfirst=True)
 vendas = vendas.drop(columns='Index')
 # print(vendas['Pdc'].sum())
 # print(vendas.groupby(['Produto']).sum())
+print(vendas['Lucro'].sum())
 
 compras = pd.read_csv('compras.csv', sep=";", encoding='latin-1').dropna()
 compras = compras.groupby(['Data', 'Produto']).sum()
@@ -153,12 +154,14 @@ infoLoja.roa = vendas['Lucro'].sum()/despesa_ativo_pago
 infoLoja.roi = (vendas['Receita'].sum() - despesa_ativo_pago)/despesa_ativo_pago
 infoLoja.roic = vendas['Lucro'].sum()/(despesa_ativo_total)
 infoLoja.passivo = despesas[(despesas['Ativo'] == 'Sim') & (despesas['Pago'] == 'Não')]['Saiu'].sum()
-roe = vendas['Lucro'].sum()/(despesa_ativo_pago-infoLoja.passivo+infoLoja.caixa)
+roe = vendas['Lucro'].sum()/(infoLoja.estoque-infoLoja.passivo+infoLoja.caixa)
 print(infoLoja.roic)
 print(infoLoja.caixa)
 print(roe)
 print(infoLoja.margemLiquida)
 print(infoLoja.roa)
+# print(infoLoja.passivo)
+print(infoLoja.estoque)
 
 infoLoja.venda_info_mensal = vendas.groupby([vendas['Data'].dt.month]).sum().reset_index()
 # infoLoja.venda_info_mensal['Data'] = infoLoja.venda_info_mensal['Data'].apply(lambda x: calendar.month_name[x])
@@ -184,11 +187,11 @@ venda_produto_geral = venda_produto_geral.drop(columns='Margem Liquida')
 # venda_produto_geral['Data'] = venda_produto_geral['Data'].apply(lambda x: calendar.month_name[x])
 venda_produto_geral = venda_produto_geral.groupby(['Produto', 'Data']).sum()
 venda_produto_geral['Pvm'] = venda_produto_geral['Retorno Distribuido']/venda_produto_geral['Qtd']
-# print(venda_produto_geral)
+print(venda_produto_geral)
 
 N = 7
 venda_produto_semanal = vendas.groupby([vendas['Data']]).sum().drop(columns={'Pdc'})
 venda_produto_semanal['Média móvel qtd'] = venda_produto_semanal['Qtd'].rolling(N).sum()
 venda_produto_semanal['Média móvel receita'] = venda_produto_semanal['Receita'].rolling(N).sum()
 venda_produto_semanal['Média móvel lucro'] = venda_produto_semanal['Lucro'].rolling(N).sum()
-print(venda_produto_semanal.reset_index().sort_values(by=['Média móvel qtd']))
+# print(venda_produto_semanal)
