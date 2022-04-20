@@ -124,6 +124,7 @@ month = date.today().month
 despesas = pd.read_csv('despesas.csv', sep=";", encoding='latin-1').dropna()
 despesas['Período'] = pd.to_datetime(despesas['Período'], dayfirst=True)
 despesas['Saiu'] = despesas['Saiu'].apply(to_number)
+# print(despesas)
 
 vendas = pd.read_csv('vendas_loja.csv', sep=";", encoding='utf-8').dropna()
 vendas['Pdc'] = vendas['Pdc'].apply(to_number)
@@ -180,13 +181,14 @@ venda_produto_geral = venda_produto_geral.merge(infoLoja.venda_info_mensal[['Dat
 venda_produto_geral['Lucro Distribuido'] = venda_produto_geral['Receita'] * venda_produto_geral['Margem Liquida']
 venda_produto_geral['Retorno Distribuido'] = venda_produto_geral['Lucro Distribuido'] + venda_produto_geral['Pdc']
 venda_produto_geral = venda_produto_geral.drop(columns='Margem Liquida')
-venda_produto_geral['Data'] = venda_produto_geral['Data'].apply(lambda x: calendar.month_name[x])
-venda_produto_geral = venda_produto_geral.groupby(['Produto']).sum()
+# venda_produto_geral['Data'] = venda_produto_geral['Data'].apply(lambda x: calendar.month_name[x])
+venda_produto_geral = venda_produto_geral.groupby(['Produto', 'Data']).sum()
 venda_produto_geral['Pvm'] = venda_produto_geral['Retorno Distribuido']/venda_produto_geral['Qtd']
 # print(venda_produto_geral)
 
+N = 7
 venda_produto_semanal = vendas.groupby([vendas['Data']]).sum().drop(columns={'Pdc'})
-venda_produto_semanal['Média 6 qtd'] = venda_produto_semanal['Qtd'].rolling(6).sum()
-venda_produto_semanal['Média 6 receita'] = venda_produto_semanal['Receita'].rolling(6).sum()
-venda_produto_semanal['Média 6 lucro'] = venda_produto_semanal['Lucro'].rolling(6).sum()
-# print(venda_produto_semanal)
+venda_produto_semanal['Média móvel qtd'] = venda_produto_semanal['Qtd'].rolling(N).sum()
+venda_produto_semanal['Média móvel receita'] = venda_produto_semanal['Receita'].rolling(N).sum()
+venda_produto_semanal['Média móvel lucro'] = venda_produto_semanal['Lucro'].rolling(N).sum()
+print(venda_produto_semanal.reset_index().sort_values(by=['Média móvel qtd']))
