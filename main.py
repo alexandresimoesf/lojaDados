@@ -124,7 +124,7 @@ month = date.today().month
 despesas = pd.read_csv('despesas.csv', sep=";", encoding='latin-1').dropna()
 despesas['Período'] = pd.to_datetime(despesas['Período'], dayfirst=True)
 despesas['Saiu'] = despesas['Saiu'].apply(to_number)
-# print((despesas[['Saiu', 'Período']].groupby([despesas['Período'].dt.month]).sum()/21).describe())
+# print((despesas[['Saiu', 'Período']].groupby([despesas['Período'].dt.isocalendar().week]).sum()))
 
 vendas = pd.read_csv('vendas_loja.csv', sep=";", encoding='utf-8').dropna()
 vendas['Pdc'] = vendas['Pdc'].apply(to_number)
@@ -174,7 +174,7 @@ infoLoja.venda_info_mensal['Caixa'] = infoLoja.venda_info_mensal['Receita'] - de
 infoLoja.venda_info_mensal['Ativos'] = despesas_mensal['Ativos cumulativos'] - infoLoja.venda_info_mensal['Pdc'].cumsum()
 infoLoja.venda_info_mensal['Roa'] = infoLoja.venda_info_mensal['Lucro'] / infoLoja.venda_info_mensal['Ativos']
 infoLoja.venda_info_mensal['Ticket médio'] = infoLoja.venda_info_mensal['Receita']/infoLoja.venda_info_mensal['Qtd']
-# print(infoLoja.venda_info_mensal)
+print(infoLoja.venda_info_mensal)
 
 
 venda_produto_geral = vendas.groupby(['Produto', vendas['Data'].dt.month]).sum().reset_index()
@@ -189,9 +189,9 @@ venda_produto_geral = venda_produto_geral.groupby(['Produto']).sum()
 venda_produto_geral['Pvm'] = venda_produto_geral['Retorno Distribuido']/venda_produto_geral['Qtd']
 # print(venda_produto_geral)
 
-N = 7
-venda_produto_semanal = vendas.groupby([vendas['Data']]).sum() #.drop(columns={'Pdc'})
+N = 4
+venda_produto_semanal = vendas.groupby([vendas['Data'].dt.isocalendar().week]).sum() #.drop(columns={'Pdc'})
 venda_produto_semanal['Média móvel qtd'] = venda_produto_semanal['Qtd'].rolling(N).sum()
 venda_produto_semanal['Média móvel receita'] = venda_produto_semanal['Receita'].rolling(N).sum()
 venda_produto_semanal['Média móvel lucro'] = venda_produto_semanal['Lucro'].rolling(N).sum()
-print(venda_produto_semanal.sort_values(by='Data').describe())
+# print(venda_produto_semanal.sort_values(by='week').describe())
