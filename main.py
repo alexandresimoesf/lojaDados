@@ -124,19 +124,21 @@ month = date.today().month
 despesas = pd.read_csv('despesas.csv', sep=";", encoding='latin-1').dropna()
 despesas['Período'] = pd.to_datetime(despesas['Período'], dayfirst=True)
 despesas['Saiu'] = despesas['Saiu'].apply(to_number)
-# print((despesas[['Saiu', 'Período']].groupby([despesas['Período'].dt.isocalendar().week]).sum()))
+# print((despesas[['Saiu', 'Período']].groupby([despesas['Período'].dt.isocalendar().week]).sum()).describe())
 
 vendas = pd.read_csv('vendas_loja.csv', sep=";", encoding='utf-8').dropna()
 vendas['Pdc'] = vendas['Pdc'].apply(to_number)
 vendas['Pdc'] = vendas['Pdc'] * vendas['Qtd']
 vendas['Receita'] = vendas['Receita'].apply(to_number)
-# vendas['Receita'] = vendas['Receita'] * vendas['Qtd']
+vendas.loc[(vendas['Produto'] == 'Tênis mormaii') & (vendas['Data'] < '2022-02-25'), 'Pdc'] = 0
+vendas.loc[(vendas['Produto'] == 'Tênis mormaii') & (vendas['Data'] >= '2022-02-25'), 'Pdc'] *= .25
+vendas.loc[(vendas['Produto'] == 'Tênis velluti') & (vendas['Data'] < '2022-04-13'), 'Pdc'] = 0
+vendas.loc[(vendas['Produto'] == 'Tênis mizuno') & (vendas['Data'] < '2022-04-26'), 'Pdc'] = 0
 vendas['Lucro'] = (vendas['Receita'] - vendas['Pdc'])
 vendas['Data'] = pd.to_datetime(vendas['Data'], dayfirst=True)
 vendas = vendas.drop(columns='Index')
-# print(vendas['Pdc'].sum())
-# print(vendas.groupby(['Produto']).sum())
-# print(vendas['Lucro'].sum())
+# vendas = vendas[(vendas['Tipo'] == 'Calçados')]
+
 
 compras = pd.read_csv('compras.csv', sep=";", encoding='latin-1').dropna()
 compras = compras.groupby(['Data', 'Produto']).sum()
@@ -160,19 +162,15 @@ roe = vendas['Lucro'].sum()/(infoLoja.estoque-infoLoja.passivo+infoLoja.caixa)
 # print(roe)
 # print(infoLoja.margemLiquida)
 # print(infoLoja.roa)
-# print(infoLoja.passivo)
-# print(infoLoja.estoque)
+
 
 infoLoja.venda_info_mensal = vendas.groupby([vendas['Data'].dt.month]).sum().reset_index()
 # infoLoja.venda_info_mensal['Data'] = infoLoja.venda_info_mensal['Data'].apply(lambda x: calendar.month_name[x])
 infoLoja.venda_info_mensal['Margem Liquida'] = infoLoja.venda_info_mensal['Lucro']/infoLoja.venda_info_mensal['Receita']
 despesas_mensal_ativo_passivo = despesas[despesas['Pago'] == 'Sim'].groupby(despesas['Período'].dt.month).sum().reset_index()
 despesas_mensal = despesas[(despesas['Pago'] == 'Sim') & (despesas['Ativo'] == 'Sim')].groupby(despesas['Período'].dt.month).sum().reset_index()
-despesas_mensal['Ativos cumulativos'] = despesas_mensal['Saiu'].cumsum()
 infoLoja.venda_info_mensal['Obrigações'] = despesas_mensal_ativo_passivo['Saiu']
 infoLoja.venda_info_mensal['Caixa'] = infoLoja.venda_info_mensal['Receita'] - despesas_mensal_ativo_passivo['Saiu']
-infoLoja.venda_info_mensal['Ativos'] = despesas_mensal['Ativos cumulativos'] - infoLoja.venda_info_mensal['Pdc'].cumsum()
-infoLoja.venda_info_mensal['Roa'] = infoLoja.venda_info_mensal['Lucro'] / infoLoja.venda_info_mensal['Ativos']
 infoLoja.venda_info_mensal['Ticket médio'] = infoLoja.venda_info_mensal['Receita']/infoLoja.venda_info_mensal['Qtd']
 print(infoLoja.venda_info_mensal)
 
@@ -187,11 +185,13 @@ venda_produto_geral = venda_produto_geral.drop(columns='Margem Liquida')
 # venda_produto_geral['Data'] = venda_produto_geral['Data'].apply(lambda x: calendar.month_name[x])
 venda_produto_geral = venda_produto_geral.groupby(['Produto']).sum()
 venda_produto_geral['Pvm'] = venda_produto_geral['Retorno Distribuido']/venda_produto_geral['Qtd']
-# print(venda_produto_geral)
+print(venda_produto_geral)
 
-N = 4
-venda_produto_semanal = vendas.groupby([vendas['Data'].dt.isocalendar().week]).sum() #.drop(columns={'Pdc'})
+N = 7
+# venda_produto_semanal = vendas.groupby([vendas['Data'].dt.isocalendar().week]).sum() #.drop(columns={'Pdc'})
+venda_produto_semanal = vendas.groupby([vendas['Data']]).sum()
 venda_produto_semanal['Média móvel qtd'] = venda_produto_semanal['Qtd'].rolling(N).sum()
 venda_produto_semanal['Média móvel receita'] = venda_produto_semanal['Receita'].rolling(N).sum()
 venda_produto_semanal['Média móvel lucro'] = venda_produto_semanal['Lucro'].rolling(N).sum()
 # print(venda_produto_semanal.sort_values(by='week').describe())
+# print(venda_produto_semanal.sort_values(by='Data').describe())
