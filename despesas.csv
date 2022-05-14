@@ -17,7 +17,7 @@ Index;Pagamento;Saiu;Período;Pago;Ativo
 15;Tênis mormaii;-R$ 1.165,92;30/03/2022;Sim;Sim
 16;Tênis velluti;-R$ 1.606,20;13/04/2022;Sim;Sim
 17;Tênis mormaii;-R$ 1.165,92;29/04/2022;Sim;Sim
-18;Tênis velluti;-R$ 1.606,20;13/05/2022;Não;Sim
+18;Tênis velluti;-R$ 1.606,20;13/05/2022;Sim;Sim
 19;Tênis mormaii;-R$ 1.165,92;29/05/2022;Não;Sim
 20;Tênis velluti;-R$ 1.606,20;12/06/2022;Não;Sim
 21;Fato;-R$ 884,00;28/03/2022;Sim;Sim
@@ -43,3 +43,5 @@ Index;Pagamento;Saiu;Período;Pago;Ativo
 41;Frete;-R$ 45,00;05/05/2022;Sim;Sim
 42;Frete;-R$ 80,00;07/05/2022;Sim;Sim
 43;Moletom;-R$ 390,00;09/05/2022;Sim;Sim
+44;Bobojaco;R$ 700,00;10/05/2022;Sim;Sim
+45;Frete;-R$ 30,00;12/05/2022;Sim;Sim

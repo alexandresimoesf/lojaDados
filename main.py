@@ -130,12 +130,10 @@ vendas = pd.read_csv('vendas_loja.csv', sep=";", encoding='utf-8').dropna()
 vendas['Pdc'] = vendas['Pdc'].apply(to_number)
 vendas['Pdc'] = vendas['Pdc'] * vendas['Qtd']
 vendas['Receita'] = vendas['Receita'].apply(to_number)
-print(vendas['Receita'].sum())
-print(despesas[(despesas['Pago'] == 'Sim')]['Saiu'].sum())
-# vendas.loc[(vendas['Produto'] == 'Tênis mormaii') & (vendas['Data'] < '2022-02-25'), 'Pdc'] = 0
-# vendas.loc[(vendas['Produto'] == 'Tênis mormaii') & (vendas['Data'] >= '2022-02-25'), 'Pdc'] *= .25
-# vendas.loc[(vendas['Produto'] == 'Tênis velluti') & (vendas['Data'] < '2022-04-13'), 'Pdc'] = 0
-# vendas.loc[(vendas['Produto'] == 'Tênis mizuno') & (vendas['Data'] < '2022-04-26'), 'Pdc'] = 0
+# print(despesas[(despesas['Pago'] == 'Sim')]['Saiu'].sum())
+# vendas.loc[(vendas['Produto'] == 'Tênis mormaii') & (vendas['Data'] < '2022-05-13'), 'Pdc'] *= .25
+# vendas.loc[(vendas['Produto'] == 'Tênis velluti') & (vendas['Data'] < '2022-05-13'), 'Pdc'] *= 1/3
+# vendas.loc[(vendas['Produto'] == 'Tênis mizuno') & (vendas['Data'] < '2022-05-13'), 'Pdc'] *= 1/3
 vendas['Lucro'] = (vendas['Receita'] - vendas['Pdc'])
 vendas['Data'] = pd.to_datetime(vendas['Data'], dayfirst=True)
 vendas = vendas.drop(columns='Index')
@@ -151,22 +149,20 @@ infoLoja = loja()
 infoLoja.meses = set(vendas['Data'].dt.month)
 infoLoja.margemLiquida = vendas['Lucro'].sum()/vendas['Receita'].sum()
 infoLoja.caixa = vendas['Receita'].sum() - despesas[despesas['Pago'] == 'Sim']['Saiu'].sum()
-infoLoja.estoque = despesas[(despesas['Ativo'] == 'Sim') & (despesas['Pago'] == 'Sim')]['Saiu'].sum() - vendas['Pdc'].sum()
+infoLoja.estoque = (despesas[(despesas['Ativo'] == 'Sim') & (despesas['Pago'] == 'Sim')]['Saiu'].sum()) * infoLoja.margemLiquida
 despesa_ativo_pago = despesas[(despesas['Ativo'] == 'Sim') & (despesas['Pago'] == 'Sim')]['Saiu'].sum()
 despesa_ativo_total = despesas[despesas['Ativo'] == 'Sim']['Saiu'].sum()
-infoLoja.roa = vendas['Lucro'].sum()/despesa_ativo_pago
+infoLoja.roa = vendas['Lucro'].sum()/(despesa_ativo_pago - (despesa_ativo_pago * infoLoja.margemLiquida))
 infoLoja.roi = (vendas['Receita'].sum() - despesa_ativo_pago)/despesa_ativo_pago
 infoLoja.roic = vendas['Lucro'].sum()/despesa_ativo_total
 infoLoja.passivo = despesas[(despesas['Ativo'] == 'Sim') & (despesas['Pago'] == 'Não')]['Saiu'].sum()
 roe = vendas['Lucro'].sum()/(infoLoja.estoque-infoLoja.passivo+infoLoja.caixa)
-# print(infoLoja.roic)
-# print(infoLoja.caixa)
-# print(roe)
-# print(infoLoja.margemLiquida)
+print(infoLoja.margemLiquida)
+print(infoLoja.estoque)
 print(infoLoja.caixa)
 print(infoLoja.roa)
 print(infoLoja.roic)
-print(infoLoja.passivo - ((1 - infoLoja.roic) * infoLoja.passivo))
+print(((1 + infoLoja.roic) * infoLoja.passivo) - infoLoja.passivo)
 
 
 infoLoja.venda_info_mensal = vendas.groupby([vendas['Data'].dt.month]).sum().reset_index()
@@ -177,7 +173,7 @@ despesas_mensal = despesas[(despesas['Pago'] == 'Sim') & (despesas['Ativo'] == '
 infoLoja.venda_info_mensal['Obrigações'] = despesas_mensal_ativo_passivo['Saiu']
 infoLoja.venda_info_mensal['Caixa'] = infoLoja.venda_info_mensal['Receita'] - despesas_mensal_ativo_passivo['Saiu']
 infoLoja.venda_info_mensal['Ticket médio'] = infoLoja.venda_info_mensal['Receita']/infoLoja.venda_info_mensal['Qtd']
-print(infoLoja.venda_info_mensal)
+# print(infoLoja.venda_info_mensal)
 
 
 venda_produto_geral = vendas.groupby(['Produto', vendas['Data'].dt.month]).sum().reset_index()
@@ -188,9 +184,9 @@ venda_produto_geral = venda_produto_geral.merge(infoLoja.venda_info_mensal[['Dat
 # venda_produto_geral['Retorno Distribuido'] = venda_produto_geral['Lucro Distribuido'] + venda_produto_geral['Pdc']
 venda_produto_geral = venda_produto_geral.drop(columns='Margem Liquida')
 # venda_produto_geral['Data'] = venda_produto_geral['Data'].apply(lambda x: calendar.month_name[x])
-venda_produto_geral = venda_produto_geral.groupby(['Produto']).sum()
+venda_produto_geral = venda_produto_geral.groupby(['Produto', 'Data']).sum()
 # venda_produto_geral['Pvm'] = venda_produto_geral['Retorno Distribuido']/venda_produto_geral['Qtd']
-print(venda_produto_geral)
+# print(venda_produto_geral)
 
 N = 7
 # venda_produto_semanal = vendas.groupby([vendas['Data'].dt.isocalendar().week]).sum() #.drop(columns={'Pdc'})
