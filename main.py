@@ -138,17 +138,19 @@ vendas['Receita'] = vendas['Receita'].apply(to_number)
 vendas['Lucro'] = (vendas['Receita'] - vendas['Pdc'])
 vendas['Data'] = pd.to_datetime(vendas['Data'], dayfirst=True)
 vendas = vendas.drop(columns='Index')
-vendas = vendas[(vendas['Tipo'] == 'Roupas')]
+# print(vendas['Lucro'].sum())
+# vendas = vendas[(vendas['Tipo'] == 'Roupas')]
 
 
 compras = pd.read_csv('compras.csv', sep=";", encoding='latin-1').dropna()
 compras = compras.groupby(['Produto', 'Data']).sum()
 compras = compras.groupby(['Produto']).count()
-compras['Retorno médio'] = compras['Qtd'] * .26
+compras['Retorno médio'] = compras['Qtd'] * 1.7 * .26
 # compras = compras.groupby(['Produto']).sum()
-print(compras.sort_values(by=['Qtd'], ascending=False))
-res1 = np.average(compras['Retorno médio'], weights=compras['Qtd'])
-print(res1)
+# print(compras.sort_values(by=['Qtd'], ascending=False))
+# res1 = np.average(compras['Retorno médio'], weights=compras['Qtd'])
+# print(res1)
+# print(vendas['Receita'].sum() * res1 / 5)
 # print(compras[compras['Qtd'] == 1].shape)
 # print(compras[compras['Qtd'] > 1].shape)
 
@@ -165,13 +167,13 @@ infoLoja.roa = vendas['Lucro'].sum()/despesas[(despesas['Ativo'] == 'Sim') & (de
 infoLoja.passivo = despesas[(despesas['Ativo'] == 'Sim') & (despesas['Prazo'] == 'Sim')]['Saiu'].sum()
 infoLoja.roic = vendas['Lucro'].sum()/(despesa_ativo_pago + infoLoja.passivo + -infoLoja.caixa if infoLoja.caixa < 0 else 0)
 roe = vendas['Lucro'].sum()/(despesa_ativo_pago - infoLoja.passivo + -infoLoja.caixa if infoLoja.caixa < 0 else 0)
-# print(infoLoja.margemLiquida)
-# print(infoLoja.passivo)
-# print(infoLoja.caixa)
-# print(infoLoja.roa)
-# print(infoLoja.roic)
-# print(roe)
-# print(((1 + infoLoja.roic) * infoLoja.passivo) - infoLoja.passivo)
+print(infoLoja.margemLiquida)
+print(infoLoja.passivo)
+print(infoLoja.caixa)
+print(infoLoja.roa)
+print(infoLoja.roic)
+print(roe)
+print(((1 + infoLoja.roic) * infoLoja.passivo) - infoLoja.passivo)
 
 
 infoLoja.venda_info_mensal = vendas.groupby([vendas['Data'].dt.month]).sum().reset_index()
@@ -182,7 +184,7 @@ despesas_mensal = despesas[(despesas['Pago'] == 'Sim') & (despesas['Ativo'] == '
 infoLoja.venda_info_mensal['Obrigações'] = despesas_mensal_ativo_passivo['Saiu']
 infoLoja.venda_info_mensal['Caixa'] = infoLoja.venda_info_mensal['Receita'] - despesas_mensal_ativo_passivo['Saiu']
 infoLoja.venda_info_mensal['Ticket médio'] = infoLoja.venda_info_mensal['Receita']/infoLoja.venda_info_mensal['Qtd']
-# print(infoLoja.venda_info_mensal)
+print(infoLoja.venda_info_mensal)
 
 
 venda_produto_geral = vendas.groupby(['Produto', vendas['Data'].dt.month]).sum().reset_index()
