@@ -168,7 +168,7 @@ infoLoja.passivo = despesas[(despesas['Ativo'] == 'Sim') & (despesas['Prazo'] ==
 infoLoja.roic = vendas['Lucro'].sum()/(despesa_ativo_pago + infoLoja.passivo + -infoLoja.caixa if infoLoja.caixa < 0 else 0)
 roe = vendas['Lucro'].sum()/(despesa_ativo_pago - infoLoja.passivo + -infoLoja.caixa if infoLoja.caixa < 0 else 0)
 print(infoLoja.margemLiquida)
-print(infoLoja.passivo)
+print(infoLoja.estoque)
 print(infoLoja.caixa)
 print(infoLoja.roa)
 print(infoLoja.roic)

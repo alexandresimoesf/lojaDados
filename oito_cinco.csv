@@ -1,32 +1,27 @@
-﻿Produto;Estoque 08/05;Reposicao;Devolução;Vendas;Estoque novo
-Bag tommy e oakley;7;0;0;1;6
-Boné Tommy;8;0;0;0;8
-Mormaii;25;0;0;0;25
-Velluti;33;0;0;4;29
+﻿Produto;Estoque;Reposicao;Devolução;Vendas;Estoque novo
+Bag tommy e oakley;6;0;0;0;6
+Boné Tommy;8;0;0;1;7
+Mormaii;25;24;0;8;41
+Velluti;29;0;0;6;23
 Mochila;1;0;0;0;1
 Tie dye fem;2;0;0;0;2
-Calça preta;24;0;0;5;19
-Calça média;11;0;0;3;8
-Calça jeans;7;0;0;2;5
-Calça plus preta;3;0;0;0;3
-Calça jogger jeans;5;0;0;0;5
-Calça palha;5;0;0;1;4
-Calça caramelo;8;0;0;2;6
-Camiseta saldo;58;0;0;7;51
+Calça;50;36;0;13;73
+Camiseta saldo;51;0;0;5;46
 Camiseta elite;15;0;0;0;15
-Manga longa;11;0;0;3;8
-Moletim feminino;7;0;0;2;5
-Tênis mizuno;13;0;0;1;12
-Bobojaco;3;4;1;8;0
-Moletom;6;6;0;5;7
+Manga longa;8;0;0;0;8
+Moletim feminino;6;0;0;1;5
+Tênis mizuno;12;0;0;0;12
+Bobojaco;0;6;0;4;2
+Moletom;7;10;0;10;7
 Calça cachoeira;13;0;0;0;13
 Kit meia oakley;5;0;0;0;5
-Kit meia sapatilha;6;0;0;0;6
+Kit meia sapatilha;6;0;0;1;5
 Short fem;10;0;0;0;10
 Calça leg;6;0;0;0;6
 Regata;6;0;0;0;6
 Polo;3;0;0;0;3
 Bermuda;10;0;0;0;10
-Calça moletom;3;0;0;0;3
-Flencee;4;0;0;1;3
-Skate;4;0;0;1;3
+Calça moletom;3;0;0;1;2
+Flencee;3;0;0;0;3
+Skate;3;0;0;1;2
+Calça cargo;0;10;0;5;5

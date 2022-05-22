@@ -3,8 +3,9 @@ import csv
 with open('oito_cinco.csv', encoding='utf-8') as f:
     reader = csv.DictReader(f, delimiter=';')
     for row in reader:
+        # print(row)
         produto = row['\ufeffProduto']
-        ea = row['Estoque 08/05']
+        ea = row['Estoque']
         rep = row['Reposicao']
         dev = row['Devolução']
         vendas = row['Vendas']
