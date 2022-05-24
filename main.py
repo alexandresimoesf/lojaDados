@@ -167,8 +167,8 @@ infoLoja.passivo = despesas[(despesas['Ativo'] == 'Sim') & (despesas['Prazo'] ==
 infoLoja.roic = vendas['Lucro'].sum()/(despesa_ativo_pago + infoLoja.passivo + -infoLoja.caixa if infoLoja.caixa < 0 else 0)
 roe = vendas['Lucro'].sum()/(despesa_ativo_pago - infoLoja.passivo + -infoLoja.caixa if infoLoja.caixa < 0 else 0)
 # print(infoLoja.margemLiquida)
-# print(infoLoja.estoque)
-# print(infoLoja.caixa)
+print(infoLoja.estoque)
+print(infoLoja.caixa)
 # print(infoLoja.roa)
 # print(infoLoja.roic)
 # print(roe)
@@ -183,17 +183,21 @@ despesas_mensal = despesas[(despesas['Pago'] == 'Sim') & (despesas['Ativo'] == '
 infoLoja.venda_info_mensal['Obrigações'] = despesas_mensal_ativo_passivo['Saiu']
 infoLoja.venda_info_mensal['Caixa'] = infoLoja.venda_info_mensal['Receita'] - despesas_mensal_ativo_passivo['Saiu']
 infoLoja.venda_info_mensal['Ticket médio'] = infoLoja.venda_info_mensal['Receita']/infoLoja.venda_info_mensal['Qtd']
-# print(infoLoja.venda_info_mensal)
+print(infoLoja.venda_info_mensal)
 
 
 venda_produto_geral = vendas.groupby(['Produto', vendas['Data'].dt.month]).sum().reset_index()
 venda_produto_geral = venda_produto_geral.groupby(['Data', 'Produto']).sum().reset_index()
 venda_produto_geral = venda_produto_geral.merge(infoLoja.venda_info_mensal[['Data', 'Margem Liquida']], left_on='Data', right_on='Data')
 venda_produto_geral = venda_produto_geral.drop(columns='Margem Liquida')
+venda_produto_geral['Data'] = 1
 # venda_produto_geral['Data'] = venda_produto_geral['Data'].apply(lambda x: calendar.month_name[x])
 venda_produto_geral = venda_produto_geral.groupby(['Produto']).sum()
-venda_produto_geral['Já ganhei'] = ((venda_produto_geral['Lucro'] / venda_produto_geral['Pdc']) * venda_produto_geral['Qtd'])
-print(venda_produto_geral.sort_values(by=['Já ganhei'], ascending=False))
+venda_produto_geral['Já ganhei / un'] = ((venda_produto_geral['Lucro'] / venda_produto_geral['Pdc']) * venda_produto_geral['Qtd'])
+# print(venda_produto_geral)
+# print(venda_produto_geral[venda_produto_geral['Já ganhei / un'] < 1].shape)
+# print(venda_produto_geral[(venda_produto_geral['Já ganhei / un'] > 1) & (venda_produto_geral['Já ganhei / un'] < 4)].shape)
+# print(venda_produto_geral[venda_produto_geral['Já ganhei / un'] > 4].shape)
 
 N = 7
 # venda_produto_semanal = vendas.groupby([vendas['Data'].dt.isocalendar().week]).sum() #.drop(columns={'Pdc'})
