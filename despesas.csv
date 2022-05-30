@@ -18,7 +18,7 @@ Index;Pagamento;Saiu;Período;Pago;Ativo;Prazo
 16;Tênis velluti;-R$ 1.606,20;13/04/2022;Sim;Sim;Sim
 17;Tênis mormaii;-R$ 1.165,92;29/04/2022;Sim;Sim;Sim
 18;Tênis velluti;-R$ 1.606,20;13/05/2022;Sim;Sim;Sim
-19;Tênis mormaii;-R$ 1.165,92;29/05/2022;Não;Sim;Sim
+19;Tênis mormaii;-R$ 1.165,92;29/05/2022;Sim;Sim;Sim
 20;Tênis velluti;-R$ 1.606,20;12/06/2022;Não;Sim;Sim
 21;Fato;-R$ 884,00;28/03/2022;Sim;Sim;Não
 22;Moletim;-R$ 295,66;02/04/2022;Sim;Sim;Não
@@ -54,3 +54,10 @@ Index;Pagamento;Saiu;Período;Pago;Ativo;Prazo
 51;Das;-R$ 61,60;20/05/2022;Sim;Não;Não
 52;Calça cargo;-R$ 731,00;23/05/2022;Sim;Sim;Não
 53;Snoway;-R$ 711,82;23/05/2022;Sim;Sim;Não
+54;Bobojaco;-R$ 2.780,00;25/05/2022;Sim;Sim;Não
+55;Frete;-R$ 45,00;25/05/2022;Sim;Sim;Não
+56;Tênis mizuno;-R$ 339,80;25/05/2022;Sim;Sim;Sim
+57;Bota fem;-R$ 720,00;26/05/2022;Sim;Sim;Não
+58;Frete;-R$ 36,00;27/05/2022;Sim;Sim;Não
+59;Adidas;-R$ 577,70;27/05/2022;Sim;Sim;Não
+60;Frete;-R$ 65,00;28/05/2022;Sim;Sim;Não
