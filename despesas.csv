@@ -1,63 +1,67 @@
-Index;Pagamento;Saiu;Período;Pago;Ativo;Prazo
-0;Maquininha;-R$ 300,00;11/01/2022;Sim;Não;Não
-1;Chronic;-R$ 1.067,20;11/01/2022;Sim;Sim;Não
-2;Fato;-R$ 748,00;07/02/2022;Sim;Sim;Não
-3;Fato;-R$ 840,00;14/02/2022;Sim;Sim;Não
-4;Fato;-R$ 902,00;21/02/2022;Sim;Sim;Não
-5;Das;-R$ 61,60;21/02/2022;Sim;Não;Não
-6;Tênis mormaii;-R$ 1.165,92;25/02/2022;Sim;Sim;Sim
-7;Fato;-R$ 428,00;02/03/2022;Sim;Sim;Não
-8;Boné Tommy e oakley;-R$ 117,00;05/03/2022;Sim;Sim;Não
-9;Bag;-R$ 181,00;12/03/2022;Sim;Sim;Não
-10;Fato e grs;-R$ 1.048,00;14/03/2022;Sim;Sim;Não
-11;Das;-R$ 61,60;21/03/2022;Sim;Não;Não
-12;Vitrine;-R$ 100,00;22/03/2022;Sim;Sim;Não
-13;Boné Tommy;-R$ 224,17;24/03/2022;Sim;Sim;Não
-14;Camiseta cyclone;-R$ 208,17;24/03/2022;Sim;Sim;Não
-15;Tênis mormaii;-R$ 1.165,92;30/03/2022;Sim;Sim;Sim
-16;Tênis velluti;-R$ 1.606,20;13/04/2022;Sim;Sim;Sim
-17;Tênis mormaii;-R$ 1.165,92;29/04/2022;Sim;Sim;Sim
-18;Tênis velluti;-R$ 1.606,20;13/05/2022;Sim;Sim;Sim
-19;Tênis mormaii;-R$ 1.165,92;29/05/2022;Sim;Sim;Sim
-20;Tênis velluti;-R$ 1.606,20;12/06/2022;Não;Sim;Sim
-21;Fato;-R$ 884,00;28/03/2022;Sim;Sim;Não
-22;Moletim;-R$ 295,66;02/04/2022;Sim;Sim;Não
-23;Fato;-R$ 430,50;11/04/2022;Sim;Sim;Não
-24;Tênis mizuno;-R$ 759,96;08/05/2022;Sim;Sim;Sim
-25;Tênis mizuno;-R$ 759,96;07/06/2022;Não;Sim;Sim
-26;Tênis mizuno;-R$ 759,96;07/07/2022;Não;Sim;Sim
-27;Moletim;-R$ 279,00;16/04/2022;Sim;Sim;Não
-28;Das;-R$ 61,60;20/04/2022;Sim;Não;Não
-29;Bobojaco;-R$ 530,00;22/04/2022;Sim;Sim;Não
-30;Moletom;-R$ 433,30;22/04/2022;Sim;Sim;Não
-31;Manga longa Lacoste;-R$ 262,00;26/04/2022;Sim;Sim;Não
-32;Adidas;-R$ 2.237,00;29/04/2022;Sim;Sim;Não
-33;Moletom;-R$ 740,00;29/04/2022;Sim;Sim;Não
-34;Camiseta lacoste;-R$ 675,00;29/04/2022;Sim;Sim;Não
-35;Frete;-R$ 110,00;29/04/2022;Sim;Sim;Não
-36;Fato;-R$ 1.680,00;02/05/2022;Sim;Sim;Não
-37;Snoway;-R$ 673,22;02/05/2022;Sim;Sim;Não
-38;Bobojaco;-R$ 680,00;02/05/2022;Sim;Sim;Não
-39;Frete;-R$ 55,00;02/05/2022;Sim;Sim;Não
-40;Bobojaco;-R$ 530,00;06/05/2022;Sim;Sim;Não
-41;Frete;-R$ 45,00;05/05/2022;Sim;Sim;Não
-42;Frete;-R$ 80,00;07/05/2022;Sim;Sim;Não
-43;Moletom;-R$ 390,00;09/05/2022;Sim;Sim;Não
-44;Bobojaco;R$ 700,00;10/05/2022;Sim;Sim;Não
-45;Frete;-R$ 30,00;12/05/2022;Sim;Sim;Não
-46;Moletom;-R$ 650,00;15/05/2022;Sim;Sim;Não
-47;Bobojaco;-R$ 1.220,00;17/05/2022;Sim;Sim;Não
-48;Calça cargo;-R$ 778,00;17/05/2022;Sim;Sim;Não
-49;Fato;-R$ 1.272,00;16/05/2022;Sim;Sim;Não
-50;Frete;-R$ 45,00;18/05/2022;Sim;Sim;Não
-50;Frete;-R$ 40,00;19/05/2022;Sim;Sim;Não
-51;Das;-R$ 61,60;20/05/2022;Sim;Não;Não
-52;Calça cargo;-R$ 731,00;23/05/2022;Sim;Sim;Não
-53;Snoway;-R$ 711,82;23/05/2022;Sim;Sim;Não
-54;Bobojaco;-R$ 2.780,00;25/05/2022;Sim;Sim;Não
-55;Frete;-R$ 45,00;25/05/2022;Sim;Sim;Não
-56;Tênis mizuno;-R$ 339,80;25/05/2022;Sim;Sim;Sim
-57;Bota fem;-R$ 720,00;26/05/2022;Sim;Sim;Não
-58;Frete;-R$ 36,00;27/05/2022;Sim;Sim;Não
-59;Adidas;-R$ 577,70;27/05/2022;Sim;Sim;Não
-60;Frete;-R$ 65,00;28/05/2022;Sim;Sim;Não
+Index;Pagamento;Saiu;Período;Pago;Ativo;Prazo;Ni
+0;Maquininha;-R$ 300,00;11/01/2022;Sim;Não;Não;1
+1;Chronic;-R$ 1.067,20;11/01/2022;Sim;Sim;Não;1
+2;Fato;-R$ 748,00;07/02/2022;Sim;Sim;Não;1
+3;Fato;-R$ 840,00;14/02/2022;Sim;Sim;Não;0,5
+4;Fato;-R$ 902,00;21/02/2022;Sim;Sim;Não;0,5
+5;Das;-R$ 61,60;21/02/2022;Sim;Não;Não;1
+6;Tênis mormaii;-R$ 1.165,92;25/02/2022;Sim;Sim;Sim;0,25
+7;Fato;-R$ 428,00;02/03/2022;Sim;Sim;Não;1
+8;Boné Tommy e oakley;-R$ 117,00;05/03/2022;Sim;Sim;Não;1
+9;Bag;-R$ 181,00;12/03/2022;Sim;Sim;Não;1
+10;Fato e grs;-R$ 1.048,00;14/03/2022;Sim;Sim;Não;1
+11;Das;-R$ 61,60;21/03/2022;Sim;Não;Não;1
+12;Vitrine;-R$ 100,00;22/03/2022;Sim;Sim;Não;1
+13;Boné Tommy;-R$ 224,17;24/03/2022;Sim;Sim;Não;0
+14;Camiseta cyclone;-R$ 208,17;24/03/2022;Sim;Sim;Não;1
+15;Tênis mormaii;-R$ 1.165,92;30/03/2022;Sim;Sim;Sim;0,25
+16;Tênis velluti;-R$ 1.606,20;13/04/2022;Sim;Sim;Sim;0,333333333
+17;Tênis mormaii;-R$ 1.165,92;29/04/2022;Sim;Sim;Sim;0,25
+18;Tênis velluti;-R$ 1.606,20;13/05/2022;Sim;Sim;Sim;0,333333333
+19;Tênis mormaii;-R$ 1.165,92;29/05/2022;Sim;Sim;Sim;0,25
+20;Tênis velluti;-R$ 1.606,20;12/06/2022;Não;Sim;Sim;0,333333333
+21;Fato;-R$ 884,00;28/03/2022;Sim;Sim;Não;0,5
+22;Moletim;-R$ 295,66;02/04/2022;Sim;Sim;Não;1
+23;Fato;-R$ 430,50;11/04/2022;Sim;Sim;Não;0
+24;Tênis mizuno;-R$ 759,96;08/05/2022;Sim;Sim;Sim;0,333333333
+25;Tênis mizuno;-R$ 759,96;07/06/2022;Não;Sim;Sim;0,333333333
+26;Tênis mizuno;-R$ 759,96;07/07/2022;Não;Sim;Sim;0,333333333
+27;Moletim;-R$ 279,00;16/04/2022;Sim;Sim;Não;0
+28;Das;-R$ 61,60;20/04/2022;Sim;Não;Não;1
+29;Bobojaco;-R$ 530,00;22/04/2022;Sim;Sim;Não;1
+30;Moletom;-R$ 433,30;22/04/2022;Sim;Sim;Não;1
+31;Manga longa Lacoste;-R$ 262,00;26/04/2022;Sim;Sim;Não;0
+32;Adidas;-R$ 2.237,00;29/04/2022;Sim;Sim;Não;1
+33;Moletom;-R$ 740,00;29/04/2022;Sim;Sim;Não;0
+34;Camiseta lacoste;-R$ 675,00;29/04/2022;Sim;Sim;Não;0
+35;Frete;-R$ 110,00;29/04/2022;Sim;Sim;Não;1
+36;Fato;-R$ 1.680,00;02/05/2022;Sim;Sim;Não;0
+37;Snoway;-R$ 673,22;02/05/2022;Sim;Sim;Não;1
+38;Bobojaco;-R$ 680,00;02/05/2022;Sim;Sim;Não;0
+39;Frete;-R$ 55,00;02/05/2022;Sim;Sim;Não;1
+40;Bobojaco;-R$ 530,00;06/05/2022;Sim;Sim;Não;0
+41;Frete;-R$ 45,00;05/05/2022;Sim;Sim;Não;1
+42;Frete;-R$ 80,00;07/05/2022;Sim;Sim;Não;1
+43;Moletom;-R$ 390,00;09/05/2022;Sim;Sim;Não;0
+44;Bobojaco;R$ 700,00;10/05/2022;Sim;Sim;Não;0
+45;Frete;-R$ 30,00;12/05/2022;Sim;Sim;Não;1
+46;Moletom;-R$ 650,00;15/05/2022;Sim;Sim;Não;0
+47;Bobojaco;-R$ 1.220,00;17/05/2022;Sim;Sim;Não;0
+48;Calça cargo;-R$ 778,00;17/05/2022;Sim;Sim;Não;1
+49;Fato;-R$ 1.272,00;16/05/2022;Sim;Sim;Não;0
+50;Frete;-R$ 45,00;18/05/2022;Sim;Sim;Não;1
+50;Frete;-R$ 40,00;19/05/2022;Sim;Sim;Não;1
+51;Das;-R$ 61,60;20/05/2022;Sim;Não;Não;1
+52;Calça cargo;-R$ 731,00;23/05/2022;Sim;Sim;Não;0
+53;Snoway;-R$ 711,82;23/05/2022;Sim;Sim;Não;0,66
+54;Bobojaco;-R$ 2.780,00;25/05/2022;Sim;Sim;Não;0
+55;Frete;-R$ 45,00;25/05/2022;Sim;Sim;Não;1
+56;Tênis mizuno;-R$ 339,80;25/05/2022;Sim;Sim;Sim;1
+57;Bota fem;-R$ 720,00;26/05/2022;Sim;Sim;Não;1
+58;Frete;-R$ 36,00;27/05/2022;Sim;Sim;Não;1
+59;Adidas;-R$ 577,70;27/05/2022;Sim;Sim;Não;0
+60;Frete;-R$ 65,00;28/05/2022;Sim;Sim;Não;1
+61;Frete;-R$ 16,40;30/05/2022;Sim;Sim;Não;1
+62;Moletom;-R$ 560,00;30/05/2022;Sim;Sim;Não;0
+63;Nike air;-R$ 1.220,00;30/05/2022;Sim;Sim;Não;1
+64;Fato;-R$ 840,00;16/05/2022;Sim;Sim;Não;0,5
