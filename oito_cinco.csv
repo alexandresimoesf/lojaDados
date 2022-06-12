@@ -1,28 +1,30 @@
-﻿Produto;Estoque;Reposicao;Devolução;Vendas;Estoque novo
-Bag tommy e oakley;6;0;0;1;5
-Boné Tommy;7;0;0;0;7
-Mormaii;41;0;0;5;36
-Velluti;23;0;0;11;12
-Mochila;1;0;0;1;0
+﻿Produto;Estoque;Reposição;Devolução;Vendas;Estoque Novo
+Bag tommy e oakley;5;0;0;0;5
+Boné Tommy;7;9;0;0;16
+Mormaii;36;0;0;6;30
+Velluti;12;0;0;1;11
 Tie dye fem;2;0;0;0;2
-Calça;73;0;0;11;62
-Camiseta saldo;46;0;0;6;40
+Calça;59;24;0;11;72
+Calça jogger;3;0;0;0;3
+Camiseta saldo;40;0;0;2;38
 Camiseta elite;15;0;0;0;15
-Manga longa;8;0;0;1;7
+Manga longa;7;0;0;1;6
 Moletim feminino;5;0;0;0;5
 Tênis mizuno;12;0;0;0;12
-Bobojaco;2;12;0;3;11
-Moletom;7;0;0;1;6
+Bobojaco;11;0;0;2;9
+Moletom;6;8;0;5;9
 Calça cachoeira;13;0;0;0;13
-Kit meia oakley;5;0;0;2;3
-Kit meia sapatilha;5;0;0;0;5
+Kit meia oakley;3;12;0;0;15
+Kit meia sapatilha;5;11;0;1;15
 Short fem;10;0;0;0;10
-Calça leg;6;0;0;0;6
+Calça leg;6;0;0;2;4
 Regata;6;0;0;0;6
 Polo;3;0;0;0;3
-Bermuda;10;0;0;0;10
+Bermuda;10;0;0;1;9
 Calça moletom;2;0;0;0;2
 Flencee;3;0;0;0;3
-Skate;2;2;0;0;4
-Shape;0;4;0;0;4
-Calça cargo;5;9;0;3;11
+Skate;4;0;0;0;4
+Shape;4;0;0;0;4
+Calça cargo;11;0;0;2;9
+Bota fem;10;0;0;5;5
+Nike air;0;30;0;6;24

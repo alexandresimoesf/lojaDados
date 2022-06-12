@@ -6,10 +6,10 @@ with open('oito_cinco.csv', encoding='utf-8') as f:
         # print(row)
         produto = row['\ufeffProduto']
         ea = row['Estoque']
-        rep = row['Reposicao']
+        rep = row['Reposição']
         dev = row['Devolução']
         vendas = row['Vendas']
-        en = row['Estoque novo']
+        en = row['Estoque Novo']
 
         print('Produto: {} \n Estoque antigo: {} \n Reposição: {} \n Devolução: {} \n Vendas: {} \n Estoque novo: {} \n\n XXXX \n\n'.format(produto, ea, rep, dev, vendas, en))
         # produto = row['Produto']

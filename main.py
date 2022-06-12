@@ -1,4 +1,5 @@
 from datetime import date
+import matplotlib.pyplot as plt
 from functools import reduce
 import numpy as np
 import calendar
@@ -125,34 +126,19 @@ month = date.today().month
 despesas = pd.read_csv('despesas.csv', sep=";", encoding='latin-1').dropna()
 despesas['Período'] = pd.to_datetime(despesas['Período'], dayfirst=True)
 despesas['Saiu'] = despesas['Saiu'].apply(to_number)
-# despesas['Novo investimento'] = despesas['Ni'] * despesas['Saiu']
-# print((despesas[['Saiu', 'Período']].groupby([despesas['Período'].dt.isocalendar().week]).sum()).describe())
 
 vendas = pd.read_csv('vendas_loja.csv', sep=";", encoding='utf-8').dropna()
 vendas['Pdc'] = vendas['Pdc'].apply(to_number)
 vendas['Pdc'] = vendas['Pdc'] * vendas['Qtd']
 vendas['Receita'] = vendas['Receita'].apply(to_number)
-# print(despesas[(despesas['Pago'] == 'Sim')]['Saiu'].sum())
-# vendas.loc[(vendas['Produto'] == 'Tênis mormaii') & (vendas['Data'] < '2022-05-13'), 'Pdc'] *= .25
-# vendas.loc[(vendas['Produto'] == 'Tênis velluti') & (vendas['Data'] < '2022-05-13'), 'Pdc'] *= 1/3
-# vendas.loc[(vendas['Produto'] == 'Tênis mizuno') & (vendas['Data'] < '2022-05-13'), 'Pdc'] *= 1/3
 vendas['Lucro'] = (vendas['Receita'] - vendas['Pdc'])
 vendas['Data'] = pd.to_datetime(vendas['Data'], dayfirst=True)
 vendas = vendas.drop(columns='Index')
-# print(vendas['Lucro'].sum())
-# vendas = vendas[(vendas['Tipo'] == 'Roupas')]
-
+vendas = vendas[vendas['Produto'].astype(str).str.startswith('Calça')]
+# print(vendas.dtypes)
 
 compras = pd.read_csv('compras.csv', sep=";", encoding='latin-1').dropna()
-compras = compras.groupby(['Produto', 'Data']).sum().reset_index()
-# compras = compras.groupby(['Produto']).sum()
-# compras = compras.groupby(['Produto']).sum()
-# print(compras.sort_values(by=['Qtd'], ascending=False))
-# res1 = np.average(compras['Retorno médio'], weights=compras['Qtd'])
-# print(res1)
-# print(vendas['Receita'].sum() * res1 / 5)
-# print(compras[compras['Qtd'] == 1].shape)
-# print(compras[compras['Qtd'] > 1].shape)
+compras['Data'] = pd.to_datetime(compras['Data'], dayfirst=True)
 
 
 infoLoja = loja()
@@ -188,14 +174,13 @@ infoLoja.venda_info_mensal['Ticket médio'] = infoLoja.venda_info_mensal['Receit
 # print(infoLoja.venda_info_mensal)
 
 
-venda_produto_geral = vendas.groupby(['Produto', vendas['Data'].dt.isocalendar().week]).sum().reset_index()
-venda_produto_geral = venda_produto_geral[venda_produto_geral['week'] >= (22 - 4)].groupby('Produto').mean().reset_index()
-# print(venda_produto_geral.sort_values(by=['Qtd'], ascending=False))
-print(set(venda_produto_geral['Produto']))
-print(set(venda_produto_geral['Produto']) - set(compras['Produto'])) # Não vendeu nas ultimas 4 semanas
-print(set(compras['Produto']) - set(vendas['Produto'])) # Nunca vendeu
-# print(vendas)
-# print()
+venda_produto_geral = vendas.groupby([vendas['Data'].dt.month]).sum()
+# venda_produto_geral = venda_produto_geral[venda_produto_geral['week'] >= (22 - 4)].groupby('Produto').mean()
+# print(venda_produto_geral)
+# print(set(venda_produto_geral['Produto']))
+# print(set(venda_produto_geral['Produto']) - set(compras['Produto'])) # Não vendeu nas ultimas 4 semanas
+# print(set(compras['Produto']) - set(vendas['Produto'])) # Nunca vendeu
+
 
 N = 7
 venda_produto_semanal = vendas.groupby([vendas['Data'].dt.isocalendar().week]).sum() #.drop(columns={'Pdc'})
@@ -203,5 +188,8 @@ venda_produto_semanal = vendas.groupby([vendas['Data'].dt.isocalendar().week]).s
 venda_produto_semanal['Média móvel qtd'] = venda_produto_semanal['Qtd'].rolling(N).sum()
 venda_produto_semanal['Média móvel receita'] = venda_produto_semanal['Receita'].rolling(N).sum()
 venda_produto_semanal['Média móvel lucro'] = venda_produto_semanal['Lucro'].rolling(N).sum()
-# print(venda_produto_semanal.sort_values(by='week'))
-# print(venda_produto_semanal.sort_values(by='Data').describe())
+hist = venda_produto_semanal.sort_values(by='week').reset_index()
+# print(hist.describe())
+# plt.plot(hist['week'], hist['Média móvel qtd'])
+# plt.show()
+# print(venda_produto_semanal.sort_values(by='Data'))
